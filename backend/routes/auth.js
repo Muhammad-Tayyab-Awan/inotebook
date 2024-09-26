@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 const { body, validationResult } = expressValidator;
 import JWT from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET;
+import getUser from "../middleware/getUser.js";
 router.post(
   "/signup",
   [
@@ -85,4 +86,17 @@ router.post(
     }
   }
 );
+
+router.post("/getuser", getUser, async (req, res) => {
+  try {
+    const userId = req.body.id;
+    const user = await Users.findOne({ id: userId }).select("-password");
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({
+      error: "Error Occured on Server Side",
+      message: error.message
+    });
+  }
+});
 export default router;
