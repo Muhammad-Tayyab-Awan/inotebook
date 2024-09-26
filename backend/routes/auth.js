@@ -2,9 +2,12 @@ import express from "express";
 import Users from "../models/Users.js";
 const router = express.Router();
 import expressValidator from "express-validator";
+import bcrypt from "bcryptjs";
 const { body, validationResult } = expressValidator;
+import JWT from "jsonwebtoken";
+const JWT_SECRET = process.env.JWT_SECRET;
 router.post(
-  "/",
+  "/signup",
   [
     body("name", "Name must conatin at least 6 chars").isLength({ min: 6 }),
     body("email", "Please enter correct eamil").isEmail(),
@@ -18,12 +21,15 @@ router.post(
       if (result.isEmpty()) {
         let user = await Users.findOne({ email: req.body.email });
         if (!user) {
+          let salt = await bcrypt.genSalt(10);
+          let hashedPassword = await bcrypt.hash(req.body.password, salt);
           user = await Users.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: hashedPassword
           });
-          res.status(200).send(user);
+          let token = JWT.sign({ id: user.id }, JWT_SECRET);
+          res.status(200).json({ authToken: token });
         } else {
           res
             .status(400)
@@ -41,4 +47,42 @@ router.post(
   }
 );
 
+router.post(
+  "/login",
+  [
+    body("email", "Please Enter Correct Email").isEmail(),
+    body("password", "Please Enter Correct Password").exists()
+  ],
+  async (req, res) => {
+    try {
+      const result = validationResult(req);
+      if (result.isEmpty()) {
+        let { email, password } = req.body;
+        let user = await Users.findOne({ email: email });
+        if (!user) {
+          res.status(400).json({
+            Error: "Invalid credentials! Please Enter Correct credentials"
+          });
+        } else {
+          const comparePassword = await bcrypt.compare(password, user.password);
+          if (comparePassword) {
+            let token = JWT.sign({ id: user.id }, JWT_SECRET);
+            res.status(200).json({ authToken: token });
+          } else {
+            res.status(400).json({
+              Error: "Invalid credentials! Please Enter Correct credentials"
+            });
+          }
+        }
+      } else {
+        return res.status(400).json({ errors: result.array() });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: "Error Occured on Server Side",
+        message: error.message
+      });
+    }
+  }
+);
 export default router;

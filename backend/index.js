@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 const app = express();
 const port = 3000;
@@ -13,9 +14,9 @@ app.use("/api/auth", authRoute);
 app.use("/api/notes", notesRoute);
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+  res.send("Hello World!");
 });
 
 app.listen(port, () => {
-    console.log(`Running on http://localhost:${port}`);
+  console.log(`Running on http://localhost:${port}`);
 });
