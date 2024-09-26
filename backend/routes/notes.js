@@ -44,20 +44,15 @@ router.put("/update/:id", getUser, async (req, res) => {
     let updatedNote = {};
     if (req.body.title) {
       updatedNote.title = req.body.title;
-      console.log(req.body.title);
     }
     if (req.body.description) {
-      console.log(req.body.description);
       updatedNote.description = req.body.description;
     }
     if (req.body.tag) {
-      console.log(req.body.tag);
       updatedNote.tag = req.body.tag;
     }
     let noteToUpdate = await Notes.findById(req.params.id);
     if (noteToUpdate) {
-      console.log(req.user.id);
-      console.log(noteToUpdate.user.toString());
       if (noteToUpdate.user.toString() === req.user.id) {
         noteToUpdate = await Notes.findByIdAndUpdate(
           req.params.id,
@@ -67,6 +62,30 @@ router.put("/update/:id", getUser, async (req, res) => {
         res.status(200).json({
           Response: "Note updated successfully"
         });
+      } else {
+        res.status(401).json({ Error: "Acces Denied!" });
+      }
+    } else {
+      req.status(404).json({ Error: "Not Found" });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error: "Error Occured on Server Side",
+      message: error.message
+    });
+  }
+});
+
+router.delete("/delete/:id", getUser, async (req, res) => {
+  try {
+    let noteToDelete = await Notes.findById(req.params.id);
+    if (noteToDelete) {
+      if (noteToDelete.user.toString() === req.user.id) {
+        noteToDelete = await Notes.findByIdAndDelete(req.params.id);
+        // res.status(200).json({
+        //   Response: "Note deleted successfully"
+        // });
+        res.send(noteToDelete);
       } else {
         res.status(401).json({ Error: "Acces Denied!" });
       }
