@@ -12,25 +12,31 @@ router.post(
       min: 8
     })
   ],
-  (req, res) => {
-    const result = validationResult(req);
-    if (result.isEmpty()) {
-      Users.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-      })
-        .then((userCreated) => {
-          res.status(200).json(userCreated);
-        })
-        .catch((err) => {
-          res.status(400).json({
-            Error: "Please enter unique value for email",
-            Message: err.message,
+  async (req, res) => {
+    try {
+      const result = validationResult(req);
+      if (result.isEmpty()) {
+        let user = await Users.findOne({ email: req.body.email });
+        if (!user) {
+          user = await Users.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
           });
-        });
-    } else {
-      return res.status(400).json({ errors: result.array() });
+          res.status(200).send(user);
+        } else {
+          res
+            .status(400)
+            .json({ error: { msg: "User with this email already exists" } });
+        }
+      } else {
+        return res.status(400).json({ errors: result.array() });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: "Error Occured on Server Side",
+        message: error.message
+      });
     }
   }
 );
