@@ -89,8 +89,8 @@ router.post(
 
 router.post("/getuser", getUser, async (req, res) => {
   try {
-    const userId = req.body.id;
-    const user = await Users.findOne({ id: userId }).select("-password");
+    const userId = req.user.id;
+    const user = await Users.findOne({ _id: userId }).select("-password");
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json({

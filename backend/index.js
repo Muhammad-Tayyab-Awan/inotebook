@@ -3,8 +3,6 @@ import express from "express";
 const app = express();
 const port = 3000;
 import dbConnection from "./dbConnection.js";
-import Users from "./models/Users.js";
-import Notes from "./models/Notes.js";
 import authRoute from "./routes/auth.js";
 import notesRoute from "./routes/notes.js";
 dbConnection();
