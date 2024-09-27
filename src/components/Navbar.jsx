@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(
@@ -31,18 +31,26 @@ const Navbar = () => {
             </h1>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <Link
+            <NavLink
               to="/"
-              className="text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-medium"
+              className={(e) => {
+                return e.isActive
+                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-bold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-medium";
+              }}
             >
               Home
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/about"
-              className="text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-medium"
+              className={(e) => {
+                return e.isActive
+                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-bold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-medium";
+              }}
             >
               About
-            </Link>
+            </NavLink>
             <button
               onClick={toggleTheme}
               className="text-gray-800 dark:text-gray-200 px-3 py-2 rounded-md focus:outline-none"
@@ -114,18 +122,26 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link
+            <NavLink
               to="/"
-              className="text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-medium"
+              className={(e) => {
+                return e.isActive
+                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-extrabold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-medium";
+              }}
             >
               Home
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/about"
-              className="text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-medium"
+              className={(e) => {
+                return e.isActive
+                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-extrabold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-medium";
+              }}
             >
               About
-            </Link>
+            </NavLink>
             <button
               onClick={toggleTheme}
               className="text-gray-800 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium"
