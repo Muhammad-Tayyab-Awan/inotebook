@@ -1,6 +1,6 @@
 function Noteitem(prop) {
   return (
-    <div className="bg-red-500 px-2 py-4 flex-col rounded-lg border border-[#111827]">
+    <div className="bg-red-500 px-2 py-4 flex flex-col rounded-lg border border-[#111827]">
       <h3 className="text-xl font-semibold justify-center items-center">
         {prop.note.title}
       </h3>
