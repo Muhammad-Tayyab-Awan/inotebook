@@ -10,7 +10,7 @@ import getUser from "../middleware/getUser.js";
 router.post(
   "/signup",
   [
-    body("name", "Name must conatin at least 6 chars").isLength({ min: 6 }),
+    body("name", "Name must conatin at least 6 chars").isLength({ min: 8 }),
     body("email", "Please enter correct eamil").isEmail(),
     body("password", "password must conatin at least 8 chars").isLength({
       min: 8
