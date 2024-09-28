@@ -35,8 +35,8 @@ const Navbar = () => {
               to="/"
               className={(e) => {
                 return e.isActive
-                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-bold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-medium";
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
               }}
             >
               Home
@@ -45,11 +45,31 @@ const Navbar = () => {
               to="/about"
               className={(e) => {
                 return e.isActive
-                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-bold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 px-3 py-2 rounded-md text-sm font-medium";
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
               }}
             >
               About
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={(e) => {
+                return e.isActive
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
+              }}
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className={(e) => {
+                return e.isActive
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
+              }}
+            >
+              Signup
             </NavLink>
             <button
               onClick={toggleTheme}
@@ -118,7 +138,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -126,8 +145,8 @@ const Navbar = () => {
               to="/"
               className={(e) => {
                 return e.isActive
-                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-extrabold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-medium";
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
               }}
             >
               Home
@@ -136,11 +155,31 @@ const Navbar = () => {
               to="/about"
               className={(e) => {
                 return e.isActive
-                  ? "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-extrabold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 block px-3 py-2 rounded-md text-base font-medium";
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
               }}
             >
               About
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={(e) => {
+                return e.isActive
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
+              }}
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className={(e) => {
+                return e.isActive
+                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 200 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
+                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
+              }}
+            >
+              Signup
             </NavLink>
             <button
               onClick={toggleTheme}
