@@ -49,6 +49,7 @@ function Signup(props) {
               name="name"
               placeholder="Enter Name"
               required
+              minLength={8}
               onChange={changehandle}
               value={signupCredentials.name}
               className="p-1 rounded-lg focus-visible:outline-none w-9/12"
