@@ -6,6 +6,8 @@ import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import { useState } from "react";
 import NotesContext from "./context/notes/NotesContext.jsx";
+import Login from "./components/Login.jsx";
+import Signup from "./components/Signup.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
   const [notes, setNotes] = useState([]);
@@ -99,6 +101,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
           <Footer />
         </BrowserRouter>
