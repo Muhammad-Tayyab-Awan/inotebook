@@ -9,6 +9,7 @@ import NotesContext from "./context/notes/NotesContext.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 const URL = "http://localhost:8080/api/";
+let token = localStorage.getItem("auth-token");
 function App() {
   const [notes, setNotes] = useState([]);
   async function fetchNotes() {
@@ -16,8 +17,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+        "auth-token": token
       }
     });
     let JsonResponse = await response.json();
@@ -39,8 +39,7 @@ function App() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+        "auth-token": token
       },
       body: JSON.stringify({ ...newNotes })
     });
@@ -51,8 +50,7 @@ function App() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+        "auth-token": token
       }
     });
     fetchNotes();
@@ -77,12 +75,30 @@ function App() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+        "auth-token": token
       },
       body: JSON.stringify({ ...updateNote[0] })
     });
     fetchNotes();
+  }
+  async function loginUser(credentials) {
+    let response = await fetch(`${URL}auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ ...credentials })
+    });
+    let JsonResponse = await response.json();
+    if (JsonResponse.success) {
+      token = JsonResponse.authToken;
+      localStorage.setItem(
+        "auth-token",
+        JSON.stringify(JsonResponse.authToken)
+      );
+    }
+    console.log(JsonResponse);
+    return JsonResponse.success;
   }
   return (
     <>
@@ -93,7 +109,8 @@ function App() {
           addNote: addNote,
           deleteNote: deleteNote,
           fetchNotes: fetchNotes,
-          updateNote: updateNote
+          updateNote: updateNote,
+          loginUser: loginUser
         }}
       >
         <BrowserRouter>
