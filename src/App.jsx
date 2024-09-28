@@ -122,7 +122,6 @@ function App() {
       localStorage.setItem("auth-token", JsonResponse.authToken);
       setIsLoggedIN(JsonResponse.authToken);
     }
-    console.log(JsonResponse);
     return JsonResponse.success;
   }
   return (
