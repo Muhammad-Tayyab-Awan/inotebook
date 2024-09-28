@@ -1,5 +1,78 @@
+import { useState, useContext } from "react";
+import NotesContext from "../context/notes/NotesContext";
+import { useNavigate } from "react-router-dom";
 function Login() {
-  return <div>Login</div>;
+  let context = useContext(NotesContext);
+  let navigate = useNavigate();
+  let { loginUser } = context;
+  const [loginCredentials, setLoginCredentials] = useState({
+    email: "",
+    password: ""
+  });
+  function changehandle(e) {
+    setLoginCredentials({
+      ...loginCredentials,
+      [e.target.name]: e.target.value
+    });
+  }
+  function handleSumbit(e) {
+    e.preventDefault();
+    loginUser(loginCredentials)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  return (
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pt-16 pb-10">
+      <div className="w-9/12 mx-auto p-4">
+        <h1 className="text-xl font-semibold text-center mb-4">
+          Login Now to use Our Services
+        </h1>
+        <form
+          onSubmit={handleSumbit}
+          className="mx-auto h-64 w-3/5 p-4 rounded-lg py-8 flex flex-col items-center justify-around"
+        >
+          <div className="flex gap-2 items-center justify-between w-3/5">
+            <label htmlFor="email" className="text-lg font-semibold">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter Email"
+              required
+              onChange={changehandle}
+              value={loginCredentials.email}
+              className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+            />
+          </div>
+          <div className="flex gap-2 items-center justify-between w-3/5">
+            <label htmlFor="password" className="text-lg font-semibold">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              minLength={8}
+              placeholder="Enter Password"
+              required
+              onChange={changehandle}
+              value={loginCredentials.password}
+              className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+            />
+          </div>
+          <button className="bg-[#111827] py-1 px-3 text-white rounded-lg">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default Login;
