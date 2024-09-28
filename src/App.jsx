@@ -8,11 +8,12 @@ import { useState } from "react";
 import NotesContext from "./context/notes/NotesContext.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
+import Logout from "./components/Logout.jsx";
 const URL = "http://localhost:8080/api/";
-let token = localStorage.getItem("auth-token");
 function App() {
   const [notes, setNotes] = useState([]);
   async function fetchNotes() {
+    let token = localStorage.getItem("auth-token");
     let response = await fetch(`${URL}notes/getallnotes`, {
       method: "GET",
       headers: {
@@ -21,9 +22,10 @@ function App() {
       }
     });
     let JsonResponse = await response.json();
-    setNotes(JsonResponse);
+    setNotes(JsonResponse.notes);
   }
   async function addNote(note) {
+    let token = localStorage.getItem("auth-token");
     let newNotes = {};
     let { title, description, tag } = note;
     if (title) {
@@ -46,6 +48,7 @@ function App() {
     fetchNotes();
   }
   async function deleteNote(id) {
+    let token = localStorage.getItem("auth-token");
     await fetch(`${URL}notes/delete/${id}`, {
       method: "DELETE",
       headers: {
@@ -56,6 +59,7 @@ function App() {
     fetchNotes();
   }
   async function updateNote(id, note) {
+    let token = localStorage.getItem("auth-token");
     let { title, description, tag } = note;
     let updateNote = notes.filter((note) => {
       return note._id === id;
@@ -91,11 +95,24 @@ function App() {
     });
     let JsonResponse = await response.json();
     if (JsonResponse.success) {
-      token = JsonResponse.authToken;
-      localStorage.setItem(
-        "auth-token",
-        JSON.stringify(JsonResponse.authToken)
-      );
+      localStorage.setItem("auth-token", JsonResponse.authToken);
+    }
+    return JsonResponse.success;
+  }
+  function logoutUser() {
+    localStorage.removeItem("auth-token");
+  }
+  async function signUp(credentials) {
+    let response = await fetch(`${URL}auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ ...credentials })
+    });
+    let JsonResponse = await response.json();
+    if (JsonResponse.success) {
+      localStorage.setItem("auth-token", JsonResponse.authToken);
     }
     console.log(JsonResponse);
     return JsonResponse.success;
@@ -110,7 +127,9 @@ function App() {
           deleteNote: deleteNote,
           fetchNotes: fetchNotes,
           updateNote: updateNote,
-          loginUser: loginUser
+          loginUser: loginUser,
+          logoutUser: logoutUser,
+          signUp: signUp
         }}
       >
         <BrowserRouter>
@@ -120,6 +139,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/logout" element={<Logout />} />
           </Routes>
           <Footer />
         </BrowserRouter>
