@@ -30,17 +30,19 @@ router.post(
             password: hashedPassword
           });
           let token = JWT.sign({ id: user.id }, JWT_SECRET);
-          res.status(200).json({ authToken: token });
+          res.status(200).json({ success: true, authToken: token });
         } else {
-          res
-            .status(400)
-            .json({ error: { msg: "User with this email already exists" } });
+          res.status(400).json({
+            success: false,
+            error: { msg: "User with this email already exists" }
+          });
         }
       } else {
-        return res.status(400).json({ errors: result.array() });
+        return res.status(400).json({ success: false, errors: result.array() });
       }
     } catch (error) {
       res.status(500).json({
+        success: false,
         error: "Error Occured on Server Side",
         message: error.message
       });
@@ -62,24 +64,27 @@ router.post(
         let user = await Users.findOne({ email: email });
         if (!user) {
           res.status(400).json({
-            Error: "Invalid credentials! Please Enter Correct credentials"
+            success: false,
+            error: "Invalid credentials! Please Enter Correct credentials"
           });
         } else {
           const comparePassword = await bcrypt.compare(password, user.password);
           if (comparePassword) {
             let token = JWT.sign({ id: user.id }, JWT_SECRET);
-            res.status(200).json({ authToken: token });
+            res.status(200).json({ success: true, authToken: token });
           } else {
             res.status(400).json({
-              Error: "Invalid credentials! Please Enter Correct credentials"
+              success: false,
+              error: "Invalid credentials! Please Enter Correct credentials"
             });
           }
         }
       } else {
-        return res.status(400).json({ errors: result.array() });
+        return res.status(400).json({ success: false, errors: result.array() });
       }
     } catch (error) {
       res.status(500).json({
+        success: false,
         error: "Error Occured on Server Side",
         message: error.message
       });
@@ -94,6 +99,7 @@ router.post("/getuser", getUser, async (req, res) => {
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json({
+      success: false,
       error: "Error Occured on Server Side",
       message: error.message
     });
