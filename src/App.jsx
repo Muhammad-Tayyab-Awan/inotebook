@@ -6,149 +6,94 @@ import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import { useState } from "react";
 import NotesContext from "./context/notes/NotesContext.jsx";
-
+const URL = "http://localhost:8080/api/";
 function App() {
-  let allNotes = [
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64b9e16298ff630625c1e",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:26.788Z",
-      __v: 0
-    },
-    {
-      _id: "66f64ba416298ff630625c20",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:32.426Z",
-      __v: 0
-    },
-    {
-      _id: "66f64ba516298ff630625c22",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:33.183Z",
-      __v: 0
-    },
-    {
-      _id: "66f64ba516298ff630625c24",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:33.768Z",
-      __v: 0
-    },
-    {
-      _id: "66f64ba616298ff630625c26",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:34.080Z",
-      __v: 0
-    },
-    {
-      _id: "66f64ba616298ff630625c28",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:34.499Z",
-      __v: 0
-    },
-    {
-      _id: "66f64ba716298ff630625c2a",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:35.064Z",
-      __v: 0
-    },
-    {
-      _id: "66f64ba716298ff630625c2c",
-      user: "66f527080578d6f9ddaaf73e",
-      title: "This is The title of notes",
-      description: "descriptio of notes",
-      tag: "General",
-      date: "2024-09-27T06:07:35.331Z",
-      __v: 0
+  const [notes, setNotes] = useState([]);
+  async function fetchNotes() {
+    let response = await fetch(`${URL}notes/getallnotes`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+      }
+    });
+    let JsonResponse = await response.json();
+    setNotes(JsonResponse);
+  }
+  async function addNote(note) {
+    let newNotes = {};
+    let { title, description, tag } = note;
+    if (title) {
+      newNotes.title = title;
     }
-  ];
-  const [notes, setNotes] = useState(allNotes);
+    if (description) {
+      newNotes.description = description;
+    }
+    if (tag) {
+      newNotes.tag = tag;
+    }
+    await fetch(`${URL}notes/addnote`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+      },
+      body: JSON.stringify({ ...newNotes })
+    });
+    fetchNotes();
+  }
+  async function deleteNote(id) {
+    await fetch(`${URL}notes/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+      }
+    });
+    fetchNotes();
+  }
+  async function updateNote(id, note) {
+    let { title, description, tag } = note;
+    let updateNote = notes.filter((note) => {
+      return note._id === id;
+    });
+    if (updateNote.length > 0) {
+      if (title) {
+        updateNote[0].title = title;
+      }
+      if (description) {
+        updateNote[0].description = description;
+      }
+      if (tag) {
+        updateNote[0].tag = tag;
+      }
+    }
+    await fetch(`${URL}notes/update/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUyNzA4MDU3OGQ2ZjlkZGFhZjczZSIsImlhdCI6MTcyNzM0MzMxMH0._rlQx_WVY-pZe83JAKFj3ya_1a_ue93rv5ZLOso1Czs"
+      },
+      body: JSON.stringify({ ...updateNote[0] })
+    });
+    fetchNotes();
+  }
   return (
     <>
-      <NotesContext.Provider value={{ Notes: notes, Setter: setNotes }}>
+      <NotesContext.Provider
+        value={{
+          Notes: notes,
+          setNotes: setNotes,
+          addNote: addNote,
+          deleteNote: deleteNote,
+          fetchNotes: fetchNotes,
+          updateNote: updateNote
+        }}
+      >
         <BrowserRouter>
           <Navbar />
           <Routes>

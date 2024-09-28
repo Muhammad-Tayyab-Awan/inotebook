@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import NotesContext from "../context/notes/NotesContext";
 import Noteitem from "./Noteitem";
 import Newnote from "./Newnote";
 function Notes() {
-  let allNotesContext = useContext(NotesContext);
-  let { Notes } = allNotesContext;
+  let context = useContext(NotesContext);
+  let { Notes, fetchNotes } = context;
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+
   return (
     <>
       <div className="mt-2 mx-auto w-3/5">
