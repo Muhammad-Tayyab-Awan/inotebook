@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
+import toast, { Toaster } from "react-hot-toast";
 import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import { useState } from "react";
@@ -42,7 +43,7 @@ function App() {
     if (tag) {
       newNotes.tag = tag;
     }
-    await fetch(`${URL}notes/addnote`, {
+    let response = await fetch(`${URL}notes/addnote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,18 +51,22 @@ function App() {
       },
       body: JSON.stringify({ ...newNotes })
     });
+    let JsonResponse = response.json();
     fetchNotes();
+    return JsonResponse;
   }
   async function deleteNote(id) {
     let token = localStorage.getItem("auth-token");
-    await fetch(`${URL}notes/delete/${id}`, {
+    let response = await fetch(`${URL}notes/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         "auth-token": token
       }
     });
+    let JsonResponse = await response.json();
     fetchNotes();
+    return JsonResponse;
   }
   async function updateNote(id, note) {
     let token = localStorage.getItem("auth-token");
@@ -80,7 +85,7 @@ function App() {
         updateNote[0].tag = tag;
       }
     }
-    await fetch(`${URL}notes/update/${id}`, {
+    let response = await fetch(`${URL}notes/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +93,9 @@ function App() {
       },
       body: JSON.stringify({ ...updateNote[0] })
     });
+    let JsonResponse = await response.json();
     fetchNotes();
+    return JsonResponse;
   }
   async function loginUser(credentials) {
     let response = await fetch(`${URL}auth/login`, {
@@ -103,7 +110,7 @@ function App() {
       localStorage.setItem("auth-token", JsonResponse.authToken);
       setIsLoggedIN(JsonResponse.authToken);
     }
-    return JsonResponse.success;
+    return JsonResponse;
   }
   function logoutUser() {
     localStorage.removeItem("auth-token");
@@ -122,7 +129,7 @@ function App() {
       localStorage.setItem("auth-token", JsonResponse.authToken);
       setIsLoggedIN(JsonResponse.authToken);
     }
-    return JsonResponse.success;
+    return JsonResponse;
   }
   return (
     <>
@@ -151,23 +158,27 @@ function App() {
             onLoaderFinished={() => setProgress(0)}
           />
           <Navbar />
+          <Toaster position="bottom-right" reverseOrder={false} />
           <Routes>
-            <Route path="/" element={<Home setProgress={setProgress} />} />
+            <Route
+              path="/"
+              element={<Home setProgress={setProgress} notify={toast} />}
+            />
             <Route
               path="/about"
-              element={<About setProgress={setProgress} />}
+              element={<About setProgress={setProgress} notify={toast} />}
             />
             <Route
               path="/login"
-              element={<Login setProgress={setProgress} />}
+              element={<Login setProgress={setProgress} notify={toast} />}
             />
             <Route
               path="/signup"
-              element={<Signup setProgress={setProgress} />}
+              element={<Signup setProgress={setProgress} notify={toast} />}
             />
             <Route
               path="/logout"
-              element={<Logout setProgress={setProgress} />}
+              element={<Logout setProgress={setProgress} notify={toast} />}
             />
           </Routes>
           <Footer />

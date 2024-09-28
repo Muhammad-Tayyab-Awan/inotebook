@@ -1,17 +1,22 @@
 import { useState, useContext } from "react";
 import NotesContext from "../context/notes/NotesContext";
 
-function Newnote() {
+function Newnote(props) {
   let context = useContext(NotesContext);
   let { addNote } = context;
   const [note, setForm] = useState({ title: "", description: "", tag: "" });
   function handleChange(e) {
     setForm({ ...note, [e.target.name]: e.target.value });
   }
-  function handleAdd(e) {
+  async function handleAdd(e) {
     e.preventDefault();
-    addNote(note);
-    setForm({ title: "", description: "", tag: "" });
+    let response = await addNote(note);
+    if (response.success) {
+      props.notify.success("Note added successfully!");
+      setForm({ title: "", description: "", tag: "" });
+    } else {
+      props.notify.error("Not not added!");
+    }
   }
   return (
     <>

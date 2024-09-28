@@ -19,15 +19,22 @@ function Signup(props) {
       [e.target.name]: e.target.value
     });
   }
-  function handleSumbit(e) {
+  async function handleSumbit(e) {
     e.preventDefault();
-    signUp(signupCredentials)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let response = await signUp(signupCredentials);
+    if (response.success) {
+      props.notify.success("Registered successfully!");
+      props.notify.success("Logged in successfully!");
+      navigate("/");
+    } else {
+      if (Array.isArray(response.errors)) {
+        response.errors.map((err) => {
+          props.notify.error(err.msg);
+        });
+      } else {
+        props.notify.error(response.error);
+      }
+    }
   }
   return (
     <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pt-16 pb-10">

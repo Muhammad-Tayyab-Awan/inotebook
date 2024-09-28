@@ -20,13 +20,23 @@ function Noteitem(prop) {
   };
   let context = useContext(NotesContext);
   let { deleteNote, updateNote } = context;
-  function handleClick(e) {
-    deleteNote(e.target.id);
+  async function handleClick(e) {
+    let response = await deleteNote(e.target.id);
+    if (response.success) {
+      prop.notify.success("Note deleted successfully!");
+    } else {
+      prop.notify.error(response.error);
+    }
   }
-  function handleUpdate(e) {
+  async function handleUpdate(e) {
     e.preventDefault();
-    updateNote(e.target.id, updatingNote);
-    toggleModal(e);
+    let response = await updateNote(e.target.id, updatingNote);
+    if (response.success) {
+      prop.notify.success(response.message);
+      toggleModal(e);
+    } else {
+      prop.notify.error(response.error);
+    }
   }
   return (
     <>

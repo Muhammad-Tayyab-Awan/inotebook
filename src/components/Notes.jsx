@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import NotesContext from "../context/notes/NotesContext";
 import Noteitem from "./Noteitem";
 import Newnote from "./Newnote";
-function Notes() {
+function Notes(props) {
   let navigate = useNavigate();
   let context = useContext(NotesContext);
   let { Notes, fetchNotes } = context;
@@ -11,6 +11,7 @@ function Notes() {
     if (localStorage.getItem("auth-token")) {
       fetchNotes();
     } else {
+      props.notify.error("Please login first!");
       navigate("/login");
     }
   }, []);
@@ -18,12 +19,14 @@ function Notes() {
   return (
     <>
       <div className="mt-2 mx-auto w-3/5">
-        <Newnote />
+        <Newnote notify={props.notify} />
         <h2 className="my-2 text-2xl font-bold text-center">All Notes</h2>
         <div className="my-4 flex flex-wrap justify-center items-center gap-8">
           {Notes.length > 0 ? (
             Notes.map((note) => {
-              return <Noteitem key={note._id} note={note} />;
+              return (
+                <Noteitem key={note._id} note={note} notify={props.notify} />
+              );
             })
           ) : (
             <div>No Notes Found</div>

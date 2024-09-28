@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import NotesContext from "../context/notes/NotesContext";
+import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
   let context = useContext(NotesContext);
@@ -21,6 +22,14 @@ const Navbar = () => {
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
+    toast(`Switched to ${darkMode ? "Light" : "Dark"} mode`, {
+      icon: `${darkMode ? "☀" : "🌙"}`,
+      style: {
+        borderRadius: "10px",
+        background: `${!darkMode ? "#fff" : "#333"}`,
+        color: `${!darkMode ? "#333" : "#fff"}`
+      }
+    });
   };
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md w-full fixed top-0 left-0">
