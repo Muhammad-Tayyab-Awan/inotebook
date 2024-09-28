@@ -11,8 +11,10 @@ router.get("/getallnotes", getUser, async (req, res) => {
 router.post(
   "/addnote",
   [
-    body("title", "Title must contain 3 chars").isLength({ min: 3 }),
-    body("description", "Title must contain 3 chars").isLength({ min: 3 })
+    body("title", "Title must contain 3 chars").isLength({ min: 10 }),
+    body("description", "Description must contain 3 chars").isLength({
+      min: 25
+    })
   ],
   getUser,
   async (req, res) => {
@@ -82,9 +84,6 @@ router.delete("/delete/:id", getUser, async (req, res) => {
     if (noteToDelete) {
       if (noteToDelete.user.toString() === req.user.id) {
         noteToDelete = await Notes.findByIdAndDelete(req.params.id);
-        // res.status(200).json({
-        //   Response: "Note deleted successfully"
-        // });
         res.send(noteToDelete);
       } else {
         res.status(401).json({ Error: "Acces Denied!" });
