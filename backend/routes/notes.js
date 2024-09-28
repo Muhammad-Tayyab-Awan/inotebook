@@ -36,9 +36,9 @@ router.post(
           description: description,
           tag: tag
         });
-        res.status(200).json(newNote);
+        res.status(200).json({ success: true, newNote });
       } else {
-        return res.status(400).json({ success: false, errors: result.array() });
+        return res.status(400).json({ success: false, errors: result.errors });
       }
     } catch (error) {
       res.status(500).json({
@@ -71,7 +71,8 @@ router.put("/update/:id", getUser, async (req, res) => {
           { new: true }
         );
         res.status(200).json({
-          Response: "Note updated successfully"
+          success: true,
+          message: "Note updated successfully!"
         });
       } else {
         res.status(401).json({ success: false, error: "Acces Denied!" });
@@ -94,7 +95,7 @@ router.delete("/delete/:id", getUser, async (req, res) => {
     if (noteToDelete) {
       if (noteToDelete.user.toString() === req.user.id) {
         noteToDelete = await Notes.findByIdAndDelete(req.params.id);
-        res.send(noteToDelete);
+        res.json({ success: true, message: "Note Deleted!" });
       } else {
         res.status(401).json({ success: false, error: "Acces Denied!" });
       }

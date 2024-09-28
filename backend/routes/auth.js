@@ -10,7 +10,7 @@ import getUser from "../middleware/getUser.js";
 router.post(
   "/signup",
   [
-    body("name", "Name must conatin at least 6 chars").isLength({ min: 8 }),
+    body("name", "Name must conatin at least 8 chars").isLength({ min: 8 }),
     body("email", "Please enter correct eamil").isEmail(),
     body("password", "password must conatin at least 8 chars").isLength({
       min: 8
@@ -34,11 +34,11 @@ router.post(
         } else {
           res.status(400).json({
             success: false,
-            error: { msg: "User with this email already exists" }
+            error: "User with this email already exists"
           });
         }
       } else {
-        return res.status(400).json({ success: false, errors: result.array() });
+        return res.status(400).json({ success: false, errors: result.errors });
       }
     } catch (error) {
       res.status(500).json({
@@ -80,7 +80,7 @@ router.post(
           }
         }
       } else {
-        return res.status(400).json({ success: false, errors: result.array() });
+        return res.status(400).json({ success: false, errors: result.errors });
       }
     } catch (error) {
       res.status(500).json({
