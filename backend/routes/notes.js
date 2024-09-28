@@ -4,8 +4,16 @@ import Notes from "../models/Notes.js";
 import getUser from "../middleware/getUser.js";
 import { body, validationResult } from "express-validator";
 router.get("/getallnotes", getUser, async (req, res) => {
-  const notes = await Notes.find({ user: req.user.id });
-  res.status(200).json(notes);
+  try {
+    const notes = await Notes.find({ user: req.user.id });
+    res.status(200).json({ success: true, notes: notes });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: "Error Occured on Server Side",
+      message: error.message
+    });
+  }
 });
 
 router.post(
@@ -30,10 +38,11 @@ router.post(
         });
         res.status(200).json(newNote);
       } else {
-        return res.status(400).json({ errors: result.array() });
+        return res.status(400).json({ success: false, errors: result.array() });
       }
     } catch (error) {
       res.status(500).json({
+        success: false,
         error: "Error Occured on Server Side",
         message: error.message
       });
@@ -65,13 +74,14 @@ router.put("/update/:id", getUser, async (req, res) => {
           Response: "Note updated successfully"
         });
       } else {
-        res.status(401).json({ Error: "Acces Denied!" });
+        res.status(401).json({ success: false, error: "Acces Denied!" });
       }
     } else {
-      req.status(404).json({ Error: "Not Found" });
+      req.status(404).json({ success: false, error: "Not Found" });
     }
   } catch (error) {
     res.status(500).json({
+      success: false,
       error: "Error Occured on Server Side",
       message: error.message
     });
@@ -86,13 +96,14 @@ router.delete("/delete/:id", getUser, async (req, res) => {
         noteToDelete = await Notes.findByIdAndDelete(req.params.id);
         res.send(noteToDelete);
       } else {
-        res.status(401).json({ Error: "Acces Denied!" });
+        res.status(401).json({ success: false, error: "Acces Denied!" });
       }
     } else {
-      req.status(404).json({ Error: "Not Found" });
+      req.status(404).json({ success: false, error: "Not Found" });
     }
   } catch (error) {
     res.status(500).json({
+      success: false,
       error: "Error Occured on Server Side",
       message: error.message
     });
