@@ -19,7 +19,6 @@ const Navbar = () => {
   const toggleTheme = () => {
     setDarkMode(!darkMode);
   };
-
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md w-full fixed top-0 left-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,26 +50,41 @@ const Navbar = () => {
             >
               About
             </NavLink>
-            <NavLink
-              to="/login"
-              className={(e) => {
-                return e.isActive
-                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
-              }}
-            >
-              Login
-            </NavLink>
-            <NavLink
-              to="/signup"
-              className={(e) => {
-                return e.isActive
-                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
-              }}
-            >
-              Signup
-            </NavLink>
+            {!localStorage.getItem("auth-token") ? (
+              <>
+                <NavLink
+                  to="/login"
+                  className={(e) => {
+                    return e.isActive
+                      ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
+                      : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
+                  }}
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/signup"
+                  className={(e) => {
+                    return e.isActive
+                      ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
+                      : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
+                  }}
+                >
+                  Signup
+                </NavLink>
+              </>
+            ) : (
+              <NavLink
+                to="/logout"
+                className={(e) => {
+                  return e.isActive
+                    ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
+                    : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
+                }}
+              >
+                Logout
+              </NavLink>
+            )}
             <button
               onClick={toggleTheme}
               className="text-gray-800 dark:text-gray-200 px-3 py-2 rounded-md focus:outline-none"
@@ -161,26 +175,41 @@ const Navbar = () => {
             >
               About
             </NavLink>
-            <NavLink
-              to="/login"
-              className={(e) => {
-                return e.isActive
-                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
-              }}
-            >
-              Login
-            </NavLink>
-            <NavLink
-              to="/signup"
-              className={(e) => {
-                return e.isActive
-                  ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 200 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
-                  : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
-              }}
-            >
-              Signup
-            </NavLink>
+            {!localStorage.getItem("auth-token") ? (
+              <>
+                <NavLink
+                  to="/login"
+                  className={(e) => {
+                    return e.isActive
+                      ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
+                      : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
+                  }}
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/signup"
+                  className={(e) => {
+                    return e.isActive
+                      ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 200 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
+                      : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
+                  }}
+                >
+                  Signup
+                </NavLink>
+              </>
+            ) : (
+              <NavLink
+                to="/logout"
+                className={(e) => {
+                  return e.isActive
+                    ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 200 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
+                    : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
+                }}
+              >
+                Logout
+              </NavLink>
+            )}
             <button
               onClick={toggleTheme}
               className="text-gray-800 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium"
