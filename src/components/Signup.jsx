@@ -1,7 +1,10 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import NotesContext from "../context/notes/NotesContext";
 import { useNavigate } from "react-router-dom";
-function Signup() {
+function Signup(props) {
+  useEffect(() => {
+    props.setProgress(100);
+  }, []);
   let navigate = useNavigate();
   let context = useContext(NotesContext);
   let { signUp } = context;

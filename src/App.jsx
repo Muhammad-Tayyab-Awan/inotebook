@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
 import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import Signup from "./components/Signup.jsx";
 import Logout from "./components/Logout.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
+  const [progress, setProgress] = useState(10);
   const [notes, setNotes] = useState([]);
   const [isLoggedIn, setIsLoggedIN] = useState(
     localStorage.getItem("auth-token")
@@ -140,13 +142,34 @@ function App() {
         }}
       >
         <BrowserRouter>
+          <LoadingBar
+            style={{ position: "relative", top: "4rem" }}
+            color="#1118ff"
+            height={2}
+            shadow={false}
+            loaderSpeed={1000}
+            progress={progress}
+            onLoaderFinished={() => setProgress(0)}
+          />
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/logout" element={<Logout />} />
+            <Route path="/" element={<Home setProgress={setProgress} />} />
+            <Route
+              path="/about"
+              element={<About setProgress={setProgress} />}
+            />
+            <Route
+              path="/login"
+              element={<Login setProgress={setProgress} />}
+            />
+            <Route
+              path="/signup"
+              element={<Signup setProgress={setProgress} />}
+            />
+            <Route
+              path="/logout"
+              element={<Logout setProgress={setProgress} />}
+            />
           </Routes>
           <Footer />
         </BrowserRouter>

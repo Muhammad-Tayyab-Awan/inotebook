@@ -1,7 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NotesContext from "../context/notes/NotesContext";
-function Logout() {
+function Logout(props) {
+  useEffect(() => {
+    props.setProgress(100);
+  }, []);
   let context = useContext(NotesContext);
   let { logoutUser } = context;
   let navigate = useNavigate();
