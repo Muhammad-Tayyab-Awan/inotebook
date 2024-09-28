@@ -12,6 +12,9 @@ import Logout from "./components/Logout.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
   const [notes, setNotes] = useState([]);
+  const [isLoggedIn, setIsLoggedIN] = useState(
+    localStorage.getItem("auth-token")
+  );
   async function fetchNotes() {
     let token = localStorage.getItem("auth-token");
     let response = await fetch(`${URL}notes/getallnotes`, {
@@ -96,11 +99,13 @@ function App() {
     let JsonResponse = await response.json();
     if (JsonResponse.success) {
       localStorage.setItem("auth-token", JsonResponse.authToken);
+      setIsLoggedIN(JsonResponse.authToken);
     }
     return JsonResponse.success;
   }
   function logoutUser() {
     localStorage.removeItem("auth-token");
+    setIsLoggedIN(localStorage.getItem("auth-token"));
   }
   async function signUp(credentials) {
     let response = await fetch(`${URL}auth/signup`, {
@@ -113,6 +118,7 @@ function App() {
     let JsonResponse = await response.json();
     if (JsonResponse.success) {
       localStorage.setItem("auth-token", JsonResponse.authToken);
+      setIsLoggedIN(JsonResponse.authToken);
     }
     console.log(JsonResponse);
     return JsonResponse.success;
@@ -129,7 +135,8 @@ function App() {
           updateNote: updateNote,
           loginUser: loginUser,
           logoutUser: logoutUser,
-          signUp: signUp
+          signUp: signUp,
+          isLoggedIn: isLoggedIn
         }}
       >
         <BrowserRouter>

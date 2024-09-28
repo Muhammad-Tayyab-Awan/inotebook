@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import NotesContext from "../context/notes/NotesContext";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
+  let context = useContext(NotesContext);
+  let { isLoggedIn } = context;
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
@@ -50,7 +53,7 @@ const Navbar = () => {
             >
               About
             </NavLink>
-            {!localStorage.getItem("auth-token") ? (
+            {!isLoggedIn ? (
               <>
                 <NavLink
                   to="/login"
@@ -175,7 +178,7 @@ const Navbar = () => {
             >
               About
             </NavLink>
-            {!localStorage.getItem("auth-token") ? (
+            {!isLoggedIn ? (
               <>
                 <NavLink
                   to="/login"
