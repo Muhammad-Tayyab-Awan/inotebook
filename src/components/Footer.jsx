@@ -2,33 +2,49 @@ import facebookIcon from "../assets/facebook.svg";
 import instagramIcon from "../assets/instagram.svg";
 import twitterIcon from "../assets/twitter.svg";
 import linkedinIcon from "../assets/linkedin.svg";
+import githubIcon from "../assets/github.svg";
 import { Link } from "react-router-dom";
 const Footer = () => {
   const socialMedia = [
-    { name: "Facebook", icon: facebookIcon, link: "https://www.facebook.com" },
-    { name: "Twitter", icon: twitterIcon, link: "https://www.twitter.com" },
-    { name: "LinkedIn", icon: linkedinIcon, link: "https://www.linkedin.com" },
+    {
+      name: "GitHub",
+      icon: githubIcon,
+      link: "https://github.com/Muhammad-Tayyab-Awan"
+    },
+    {
+      name: "Facebook",
+      icon: facebookIcon,
+      link: "https://www.facebook.com/infowithawan1918"
+    },
+    {
+      name: "Twitter",
+      icon: twitterIcon,
+      link: "https://x.com/m_tayyabrAwan26"
+    },
+    {
+      name: "LinkedIn",
+      icon: linkedinIcon,
+      link: "https://www.linkedin.com/in/muhammad-tayyab-awan/"
+    },
     {
       name: "Instagram",
       icon: instagramIcon,
-      link: "https://www.instagram.com"
+      link: "https://www.instagram.com/infowithawan1918"
     }
   ];
-
+  let date = new Date();
+  let year = date.getFullYear();
   return (
     <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300 py-6 relative bottom-0 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          {/* Footer logo or branding */}
           <div className="mb-4 md:mb-0">
             <h1 className="flex items-baseline text-3xl font-bold">
               <span className="dark:text-gray-200">i</span>
               <span className="text-purple-500">Notebook</span>
             </h1>
-            <p className="text-sm">© 2024 All Rights Reserved</p>
+            <p className="text-sm">&copy; {year} All Rights Reserved</p>
           </div>
-
-          {/* Social media icons */}
           <div className="flex space-x-4 bg-yellow-300 p-2 rounded-xl">
             {socialMedia.map((media, index) => (
               <a
@@ -44,8 +60,6 @@ const Footer = () => {
             ))}
           </div>
         </div>
-
-        {/* Footer links */}
         <div className="mt-6 text-center">
           <ul className="flex justify-center space-x-4">
             <li>
