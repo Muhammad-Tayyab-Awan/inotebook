@@ -123,13 +123,18 @@ function Noteitem(prop) {
           </div>
         </div>
       )}
-      <div className="bg-red-500 px-2 py-4 flex flex-col rounded-lg border border-[#111827] justify-evenly">
-        <h3 className="text-xl font-semibold justify-center items-center">
+      <div className="dark:bg-[#111827] bg-white dark:text-white text-[#111827] flex flex-col rounded-lg border border-[#111827] justify-between w-full sm:w-[45%] md:w-[45%] lg:w-[45%] xl:w-[30%] h-56 overflow-auto">
+        <h3 className="dark:bg-white bg-[#111827] text-white dark:text-[#111827] text-lg font-semibold justify-center items-center p-2 sticky top-0">
           {prop.note.title}
         </h3>
-        <p>{prop.note.description}</p>
-        <span>{prop.note.tag}</span>
-        <div className="flex gap-2 self-end">
+        <p className="p-2 text-justify text-sm">{prop.note.description}</p>
+        <div className="w-auto p-1 flex justify-start items-center gap-2">
+          <span className="bg-[#111827] dark:bg-white text-white dark:text-[#111827] font-semibold py-1 px-2 text-center rounded-md inline-block">
+            Tag:
+          </span>
+          <span className="font-bold">{prop.note.tag}</span>
+        </div>
+        <div className="flex gap-2 self-end sticky bottom-0 z-[0] p-2 w-auto">
           <img
             src={deleteIcon}
             alt="delete"

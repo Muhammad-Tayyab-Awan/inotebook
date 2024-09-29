@@ -21,8 +21,8 @@ function Newnote(props) {
   return (
     <>
       <h2 className="text-2xl font-bold text-center">Add New Note</h2>
-      <form className="my-4 py-4 flex flex-col justify-center items-center gap-3">
-        <div className="flex gap-2 items-center justify-between w-3/5">
+      <form className="bg-white w-full dark:bg-[#111827] mx-auto h-96 sm:w-full md:w-full lg:w-full px-4 rounded-lg py-8 flex flex-col items-center justify-evenly dark:text-white text-neutral-600">
+        <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
           <label htmlFor="title" className="text-lg font-semibold">
             Title
           </label>
@@ -34,11 +34,11 @@ function Newnote(props) {
             value={note.title}
             placeholder="Enter Title"
             required
-            className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+            className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
             onChange={handleChange}
           />
         </div>
-        <div className="flex gap-2 items-baseline justify-between w-3/5">
+        <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
           <label htmlFor="description" className="text-lg font-semibold">
             Description
           </label>
@@ -49,11 +49,11 @@ function Newnote(props) {
             minLength={25}
             required
             value={note.description}
-            className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+            className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
             onChange={handleChange}
           ></textarea>
         </div>
-        <div className="flex gap-2 items-center justify-between w-3/5">
+        <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
           <label htmlFor="tag" className="text-lg font-semibold">
             Tag
           </label>
@@ -63,7 +63,7 @@ function Newnote(props) {
             name="tag"
             value={note.tag}
             placeholder="Enter Tag"
-            className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+            className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
             onChange={handleChange}
           />
         </div>
@@ -73,7 +73,7 @@ function Newnote(props) {
               ? true
               : false
           }
-          className="bg-[#111827] text-white py-1 px-4 rounded-xl text-lg font-semibold focus-visible:outline-none disabled:opacity-50 border border-white"
+          className="bg-[#111827] dark:bg-white dark:text-[#111827] text-white py-1 px-4 rounded-lg text-lg font-semibold focus-visible:outline-none disabled:opacity-50"
           onClick={handleAdd}
         >
           Add Note
