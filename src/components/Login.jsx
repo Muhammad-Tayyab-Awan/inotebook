@@ -3,6 +3,10 @@ import NotesContext from "../context/notes/NotesContext";
 import { useNavigate } from "react-router-dom";
 function Login(props) {
   useEffect(() => {
+    if (localStorage.getItem("auth-token")) {
+      props.notify.error("You already logged in!");
+      navigate("/");
+    }
     props.setProgress(100);
   }, []);
   let context = useContext(NotesContext);
