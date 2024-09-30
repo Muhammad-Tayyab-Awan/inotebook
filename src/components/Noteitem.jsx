@@ -42,11 +42,11 @@ function Noteitem(prop) {
     <>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white rounded-lg shadow-lg w-96 border-2 border-[#111827]">
+          <div className="bg-white dark:bg-[#111827] rounded-lg shadow-lg w-[60%] border-2 border-[#111827] dark:border-white text-[#111827] dark:text-white">
             <div className="px-4 py-2 border-b border-gray-200 flex justify-between items-center">
               <h1 className="text-lg font-semibold">Edit Note</h1>
               <button
-                className="text-2xl text-gray-500 hover:text-gray-900"
+                className="text-2xl text-gray-500 hover:text-gray-900 dark:text-white dark:hover:text-gray-200"
                 onClick={toggleModal}
                 id={updateId}
               >
@@ -54,7 +54,7 @@ function Noteitem(prop) {
               </button>
             </div>
             <div>
-              <from className="py-4 flex flex-col justify-center items-center gap-3 w-full bg-yellow-500">
+              <from className="py-4 flex flex-col justify-center items-center gap-5 w-full bg-yellow-500 dark:bg-[#776e6e]">
                 <div className="flex gap-2 items-center justify-between w-[90%]">
                   <label htmlFor="uptitle" className="text-lg font-semibold">
                     Title
@@ -67,7 +67,7 @@ function Noteitem(prop) {
                     placeholder="Enter Title"
                     minLength={10}
                     required
-                    className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
                     onChange={handleChange}
                   />
                 </div>
@@ -85,7 +85,7 @@ function Noteitem(prop) {
                     required
                     minLength={25}
                     value={updatingNote.description}
-                    className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 h-40 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
                     onChange={handleChange}
                   ></textarea>
                 </div>
@@ -99,7 +99,7 @@ function Noteitem(prop) {
                     name="tag"
                     value={updatingNote.tag}
                     placeholder="Enter Tag"
-                    className="p-1 rounded-lg focus-visible:outline-none w-9/12"
+                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
                     onChange={handleChange}
                   />
                 </div>
@@ -113,7 +113,7 @@ function Noteitem(prop) {
                     ? true
                     : false
                 }
-                className="bg-[#111827] text-white px-2 py-1 rounded-lg hover:bg-[#111837] disabled:opacity-50"
+                className="bg-[#111827] dark:bg-white dark:hover:bg-gray-300 text-white dark:text-[#111827] font-semibold px-2 py-1 rounded-lg hover:bg-[#111837] disabled:opacity-50"
                 onClick={handleUpdate}
                 id={updateId}
               >
