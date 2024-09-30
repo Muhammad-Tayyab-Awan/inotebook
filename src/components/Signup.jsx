@@ -9,6 +9,7 @@ function Signup(props) {
       );
       navigate("/logout");
     }
+    document.title = "iNotebook - Register Now";
     props.setProgress(100);
   }, []);
   let navigate = useNavigate();

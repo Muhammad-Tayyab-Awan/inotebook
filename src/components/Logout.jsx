@@ -12,6 +12,7 @@ function Logout(props) {
       props.notify.error("Please login first!");
       navigate("/login");
     }
+    document.title = "iNotebook - Logout";
     props.setProgress(100);
   }, []);
   let context = useContext(NotesContext);

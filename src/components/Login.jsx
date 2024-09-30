@@ -7,6 +7,7 @@ function Login(props) {
       props.notify.error("You already logged in!");
       navigate("/");
     }
+    document.title = "iNotebook - Login Now";
     props.setProgress(100);
   }, []);
   let context = useContext(NotesContext);

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 function About(props) {
   useEffect(() => {
+    document.title = "iNotebook - About Us";
     props.setProgress(100);
   }, []);
   return (

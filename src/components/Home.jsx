@@ -2,6 +2,7 @@ import Notes from "./Notes";
 import { useEffect } from "react";
 function Home(props) {
   useEffect(() => {
+    document.title = "iNotebook - Your notes are saved in cloud";
     props.setProgress(100);
   }, []);
   return (
