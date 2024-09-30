@@ -63,16 +63,6 @@ const Footer = () => {
         <div className="mt-6 text-center">
           <ul className="flex justify-center space-x-4">
             <li>
-              <Link to="/about" className="hover:underline">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/services" className="hover:underline">
-                Services
-              </Link>
-            </li>
-            <li>
               <Link to="/contact" className="hover:underline">
                 Contact
               </Link>
