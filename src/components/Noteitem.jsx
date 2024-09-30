@@ -42,7 +42,7 @@ function Noteitem(prop) {
     <>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white dark:bg-[#111827] rounded-lg shadow-lg w-[60%] border-2 border-[#111827] dark:border-white text-[#111827] dark:text-white">
+          <div className="bg-white dark:bg-[#111827] rounded-lg shadow-lg w-[95%] sm:w-[70%] border-2 border-[#111827] dark:border-white text-[#111827] dark:text-white">
             <div className="px-4 py-2 border-b border-gray-200 flex justify-between items-center">
               <h1 className="text-lg font-semibold">Edit Note</h1>
               <button
