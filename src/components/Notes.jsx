@@ -22,7 +22,9 @@ function Notes(props) {
         <Newnote notify={props.notify} />
       </div>
       <div className="w-[95%] sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[85%] mx-auto p-4">
-        <h2 className="my-2 text-2xl font-bold text-center">All Notes</h2>
+        <h2 className="my-2 text-2xl font-bold text-center text-black dark:text-white">
+          All Notes
+        </h2>
         <div className="my-4 flex flex-wrap justify-center items-baseline gap-3">
           {Notes.length > 0 ? (
             Notes.map((note) => {

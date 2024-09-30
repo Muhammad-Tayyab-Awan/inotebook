@@ -20,7 +20,9 @@ function Newnote(props) {
   }
   return (
     <>
-      <h2 className="text-2xl font-bold text-center">Add New Note</h2>
+      <h2 className="text-2xl font-bold text-center py-4 text-black dark:text-white">
+        Add New Note
+      </h2>
       <form className="bg-white w-full dark:bg-[#111827] mx-auto h-96 sm:w-full md:w-full lg:w-full px-4 rounded-lg py-8 flex flex-col items-center justify-evenly dark:text-white text-neutral-600">
         <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
           <label htmlFor="title" className="text-lg font-semibold">
@@ -73,7 +75,7 @@ function Newnote(props) {
               ? true
               : false
           }
-          className="bg-[#111827] dark:bg-white dark:text-[#111827] text-white py-1 px-4 rounded-lg text-lg font-semibold focus-visible:outline-none disabled:opacity-50"
+          className="bg-[#111827] dark:bg-white text-white dark:text-[#111827] py-1 px-4 rounded-lg text-lg font-semibold focus-visible:outline-none disabled:opacity-50"
           onClick={handleAdd}
         >
           Add Note
