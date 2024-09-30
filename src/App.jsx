@@ -11,6 +11,7 @@ import NotesContext from "./context/notes/NotesContext.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 import Logout from "./components/Logout.jsx";
+import PrivacyPolicy from "./components/PrivacyPolicy.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
   const [progress, setProgress] = useState(10);
@@ -179,6 +180,12 @@ function App() {
             <Route
               path="/logout"
               element={<Logout setProgress={setProgress} notify={toast} />}
+            />
+            <Route
+              path="/privacy-policy"
+              element={
+                <PrivacyPolicy setProgress={setProgress} notify={toast} />
+              }
             />
           </Routes>
           <Footer />
