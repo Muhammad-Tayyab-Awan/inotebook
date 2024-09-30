@@ -3,6 +3,12 @@ import NotesContext from "../context/notes/NotesContext";
 import { useNavigate } from "react-router-dom";
 function Signup(props) {
   useEffect(() => {
+    if (localStorage.getItem("auth-token")) {
+      props.notify.error(
+        "In order to register another account you must have to logout from the current account!"
+      );
+      navigate("/logout");
+    }
     props.setProgress(100);
   }, []);
   let navigate = useNavigate();
