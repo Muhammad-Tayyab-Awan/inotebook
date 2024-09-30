@@ -5,7 +5,9 @@ function About(props) {
   }, []);
   return (
     <>
-      <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pt-16 pb-10"></div>
+      <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 dark:bg-[#776e6e] pt-16 pb-10">
+        
+      </div>
     </>
   );
 }
