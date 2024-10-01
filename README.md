@@ -1,71 +1,81 @@
 # iNotebook
 
-### Online Notekeeping site
+### An Online Notekeeping Application
 
-#### Working
+**iNotebook** is a responsive online platform where users can manage their notes securely on the cloud. The application offers features like registration, login, note management, and a theme toggle between dark and light modes.
 
-- You can register here
-- After registration you can add your notes
-- Each note contain a title, description and tag (by default General)
-- You can also edit existing notes
-- You can also delete existing notes
-- It also contains logout and login features
-- This site also contains the feature of dark and light theme
-- whole site is responsive
+---
 
-#### How to use
+### Features
 
-## In Order to use this site Follow these steps
+- **User Registration**: Create a personal account to manage your notes.
+- **Note Management**: Add, edit, and delete notes. Each note includes:
+  - A title
+  - A description
+  - A tag (default is "General")
+- **Theme Switcher**: Toggle between light and dark themes.
+- **Responsive Design**: The site is fully responsive across different screen sizes.
+- **Authentication**: Login and logout functionality for secure access.
 
-- Clone this repository by running the following command
+---
 
-```bash
-git clone https://github.com/Muhammad-Tayyab-Awan/inotebook
-```
+### Getting Started
 
-- Open the cloned repository in your Favorite Code Editor
+#### Steps to run iNotebook on your local machine:
 
-- Open **(terminal/command promt/bash/zsh/powershell)** in the cloned repository folder and run following command
+1. **Clone the repository**  
+   Open a terminal and run the following command:
 
-To install node dependencies
+   ```bash
+   git clone https://github.com/Muhammad-Tayyab-Awan/inotebook
+   ```
 
-```bash
-npm install
-```
+2. **Open the project**  
+   Use your favorite code editor to open the cloned repository.
 
-To run development
+3. **Install dependencies**  
+   Navigate to the project folder in your terminal and install the required Node.js dependencies:
 
-```bash
-npm run dev
-```
+   ```bash
+   npm install
+   ```
 
-> > > Note: Keep in mind that npm is installed
+4. **Run the development server**  
+   Start the frontend development server by running:
 
-Now Frontend is running on your localhost and you should also see the link to the frontend
+   ```bash
+   npm run dev
+   ```
 
-Link to the frontend:
+   Make sure **npm** is installed on your system.
 
-```https
-http://localhost:5173
-```
+   After running the command, the frontend will be hosted locally, and a link to the app will appear in the terminal.
 
-### Now its time to run backend
+   **Access the frontend at:**
 
-#### [Guide to the backend](./backend/Backend.md)
+   ```https
+   http://localhost:5173
+   ```
 
-## Technologies used in **iNotebook**
+### Backend Setup
 
-### Frontend
+To start the backend server, follow the instructions provided in the [Backend Guide](./backend/Backend.md).
 
-- #### ReactJs
+---
 
-  > - React Router Dom
-  > - React Top Loading Bar
-  > - React Hot Toast
+### Technologies Used in **iNotebook**
 
-- #### Tailwind CSS
+#### Frontend
 
-### Backend
+- **React.js**:
 
-- #### ExpressJs
-- #### Mongoose
+  - React Router DOM (for routing)
+  - React Top Loading Bar (for progress indication)
+  - React Hot Toast (for notifications)
+
+- **Tailwind CSS**: For building the UI with responsive design.
+
+#### Backend
+
+- **Express.js**: For building the server-side logic.
+- **Mongoose**: For managing MongoDB interactions.
