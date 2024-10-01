@@ -50,7 +50,3 @@
 |   `/api/notes/addnote`   |            Add a new note            |  POST  |
 | `/api/notes/update/:id`  |     Update a specific note by ID     |  PUT   |
 | `/api/notes/delete/:id`  |     Delete a specific note by ID     | DELETE |
-
----
-
-This version improves clarity, structure, and consistency while providing all the necessary information for setting up and running the backend server.
