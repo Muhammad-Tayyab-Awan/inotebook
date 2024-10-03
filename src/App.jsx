@@ -150,8 +150,7 @@ function App() {
       >
         <BrowserRouter>
           <LoadingBar
-            style={{ position: "relative", top: "4rem" }}
-            color="#1118ff"
+            color="#a855f7"
             height={2}
             shadow={false}
             loaderSpeed={1000}
