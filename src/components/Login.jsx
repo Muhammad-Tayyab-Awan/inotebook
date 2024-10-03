@@ -28,7 +28,6 @@ function Login(props) {
   async function handleSumbit(e) {
     e.preventDefault();
     let response = await loginUser(loginCredentials);
-    console.log(response);
     if (response.success) {
       props.notify.success("Logged in successfully");
       navigate("/");
