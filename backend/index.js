@@ -6,7 +6,12 @@ const port = 8080;
 import dbConnection from "./dbConnection.js";
 import authRoute from "./routes/auth.js";
 import notesRoute from "./routes/notes.js";
-dbConnection();
+const connectionToDB = await dbConnection();
+if (connectionToDB.success) {
+  console.log(connectionToDB.message);
+} else {
+  console.log(connectionToDB.error);
+}
 const corsOptions = {
   origin: "*",
   credentials: true,
@@ -19,9 +24,19 @@ app.use("/api/auth", authRoute);
 app.use("/api/notes", notesRoute);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res
+    .status(200)
+    .json({ success: true, message: "Welcome to iNotebook Server!" });
 });
 
-app.listen(port, () => {
-  console.log(`Running on http://localhost:${port}`);
+app.all("*", (req, res) => {
+  res.sendStatus(404);
+});
+
+app.listen(port, (err) => {
+  if (!err) {
+    console.log(`Server is Running on http://localhost:${port}`);
+  } else {
+    console.log(err.message);
+  }
 });
