@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import Notes from "./Notes";
 import { useEffect } from "react";
 function Home(props) {
