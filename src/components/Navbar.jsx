@@ -107,7 +107,7 @@ const Navbar = () => {
             <div
               className={`absolute bg-orange-500 dark:bg-slate-400 ${
                 sideBar && isLoggedIn ? "right-0" : "-right-full"
-              } top-0 h-screen w-1/4 p-4 shadow-lg shadow-black rounded-tl-xl rounded-bl-xl`}
+              } top-0 h-screen md:w-1/3 lg:w-1/4 p-4 shadow-lg shadow-black rounded-tl-xl rounded-bl-xl`}
             >
               <button
                 title="Close"
@@ -252,17 +252,47 @@ const Navbar = () => {
                 </NavLink>
               </>
             ) : (
-              <NavLink
-                to="/logout"
-                className={(e) => {
-                  return e.isActive
-                    ? "bg-slate-500 text-gray-200 text-center dark:bg-gray-200 dark:text-gray-800 200 hover:bg-gray-700 dark:hover:bg-gray-400 block px-3 py-2 rounded-md text-base font-extrabold"
-                    : "text-gray-800 text-center dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium";
-                }}
+              <button
+                onClick={toggleSideBar}
+                className="text-gray-800 text-center w-full dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium focus-visible:outline-none"
               >
-                Logout
-              </NavLink>
+                Acount
+              </button>
             )}
+            <div
+              className={`absolute bg-orange-500 dark:bg-slate-400 ${
+                sideBar && isLoggedIn ? "right-0" : "-right-full"
+              } top-[0] h-screen p-4 shadow-lg shadow-black rounded-tl-xl rounded-bl-xl`}
+            >
+              <button
+                title="Close"
+                onClick={toggleSideBar}
+                className="absolute top-1 left-1 hover:bg-slate-300 transition focus-visible:outline-none rounded-full bg-white"
+              >
+                <img src={closeIcon} alt="close" className="h-6 w-6" />
+              </button>
+              <div className="flex flex-col w-full h-full justify-start items-center py-2">
+                <h3 className="text-lg font-semibold text-white">Acount</h3>
+                <div className="w-full flex flex-col justify-start items-center font-semibold m-3">
+                  <div className="my-3" title="Name">
+                    {loggedInUser.name}
+                  </div>
+                  <div className="my-3" title="Email">
+                    {loggedInUser.email}
+                  </div>
+                  <div className="my-3" title="Joined On">
+                    {loggedInUser.joinedOn.split("T")[0]}
+                  </div>
+                </div>
+                <NavLink
+                  onClick={toggleSideBar}
+                  to="/logout"
+                  className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-xl focus-visible:outline-none"
+                >
+                  Logout
+                </NavLink>
+              </div>
+            </div>
             <button
               onClick={toggleTheme}
               className="flex justify-center items-center w-full focus-visible:outline-none px-3 py-2 rounded-md"
