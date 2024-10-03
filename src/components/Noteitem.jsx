@@ -85,7 +85,7 @@ function Noteitem(prop) {
                     required
                     minLength={25}
                     value={updatingNote.description}
-                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 h-40 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 min-h-40 max-h-72 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
                     onChange={handleChange}
                   ></textarea>
                 </div>
@@ -123,7 +123,7 @@ function Noteitem(prop) {
           </div>
         </div>
       )}
-      <div className="dark:bg-[#111827] bg-white dark:text-white text-[#111827] flex flex-col rounded-lg border border-[#111827] justify-between w-full sm:w-[45%] md:w-[45%] lg:w-[45%] xl:w-[30%] h-56 overflow-auto">
+      <div className="dark:bg-[#111827] bg-white dark:text-white text-[#111827] flex flex-col rounded-lg border border-[#111827] justify-between w-full sm:w-[45%] md:w-[45%] lg:w-[45%] xl:w-[30%] h-56 overflow-y-auto overflow-x-hidden">
         <h3 className="dark:bg-white bg-[#111827] text-white dark:text-[#111827] text-lg font-semibold justify-center items-center p-2 sticky top-0">
           {prop.note.title}
         </h3>
@@ -134,7 +134,7 @@ function Noteitem(prop) {
           </span>
           <span className="font-bold">{prop.note.tag}</span>
         </div>
-        <div className="flex gap-2 self-end sticky bottom-0 z-[0] p-2 w-auto">
+        <div className="flex gap-2 self-end sticky bottom-0 z-[0] p-2 w-auto bg-[#111827] dark:bg-white rounded-tl-lg">
           <img
             src={deleteIcon}
             alt="delete"
