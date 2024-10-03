@@ -175,7 +175,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-gray-700 focus:outline-none"
+              className="bg-gray-800 dark:bg-white inline-flex items-center justify-center p-2 rounded-md text-white dark:text-black hover:bg-gray-700 dark:hover:bg-slate-200 focus:outline-none"
             >
               <svg
                 className="h-6 w-6"
