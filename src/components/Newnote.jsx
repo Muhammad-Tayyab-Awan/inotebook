@@ -52,7 +52,7 @@ function Newnote(props) {
             minLength={25}
             required
             value={note.description}
-            className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+            className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white max-h-32 min-h-32"
             onChange={handleChange}
           ></textarea>
         </div>
