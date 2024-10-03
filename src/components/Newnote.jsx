@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
-import NotesContext from "../context/notes/NotesContext";
+import Context from "../context/Context";
 
 function Newnote(props) {
-  let context = useContext(NotesContext);
+  let context = useContext(Context);
   let { addNote } = context;
   const [note, setForm] = useState({ title: "", description: "", tag: "" });
   function handleChange(e) {

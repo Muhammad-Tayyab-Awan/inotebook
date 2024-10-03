@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import { useState, useContext, useEffect } from "react";
-import NotesContext from "../context/notes/NotesContext";
+import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
 function Login(props) {
   useEffect(() => {
@@ -10,7 +12,7 @@ function Login(props) {
     document.title = "iNotebook - Login Now";
     props.setProgress(100);
   }, []);
-  let context = useContext(NotesContext);
+  let context = useContext(Context);
   let navigate = useNavigate();
   let { loginUser } = context;
   const [loginCredentials, setLoginCredentials] = useState({

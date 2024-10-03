@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NotesContext from "../context/notes/NotesContext";
+import Context from "../context/Context";
 import logoutIcon from "../assets/logout.svg";
 function Logout(props) {
   const [show, setShow] = useState(false);
@@ -15,7 +17,7 @@ function Logout(props) {
     document.title = "iNotebook - Logout";
     props.setProgress(100);
   }, []);
-  let context = useContext(NotesContext);
+  let context = useContext(Context);
   let { logoutUser } = context;
   let logoutHandler = () => {
     logoutUser();

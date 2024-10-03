@@ -1,17 +1,17 @@
 import "./App.css";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import LoadingBar from "react-top-loading-bar";
-import toast, { Toaster } from "react-hot-toast";
 import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
-import { useState } from "react";
-import NotesContext from "./context/notes/NotesContext.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 import Logout from "./components/Logout.jsx";
 import PrivacyPolicy from "./components/PrivacyPolicy.jsx";
+import { useState } from "react";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
+import toast, { Toaster } from "react-hot-toast";
+import Context from "./context/Context.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
   const [progress, setProgress] = useState(10);
@@ -134,7 +134,7 @@ function App() {
   }
   return (
     <>
-      <NotesContext.Provider
+      <Context.Provider
         value={{
           Notes: notes,
           setNotes: setNotes,
@@ -190,7 +190,7 @@ function App() {
           </Routes>
           <Footer />
         </BrowserRouter>
-      </NotesContext.Provider>
+      </Context.Provider>
     </>
   );
 }

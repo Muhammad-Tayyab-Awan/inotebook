@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NotesContext from "../context/notes/NotesContext";
+import Context from "../context/Context";
 import Noteitem from "./Noteitem";
 import Newnote from "./Newnote";
 function Notes(props) {
   let navigate = useNavigate();
-  let context = useContext(NotesContext);
+  let context = useContext(Context);
   let { Notes, fetchNotes } = context;
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {

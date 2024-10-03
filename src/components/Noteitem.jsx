@@ -1,7 +1,7 @@
 import deleteIcon from "../assets/delete.svg";
 import editIcon from "../assets/edit.svg";
 import { useState, useContext } from "react";
-import NotesContext from "../context/notes/NotesContext";
+import Context from "../context/Context";
 function Noteitem(prop) {
   const [isOpen, setIsOpen] = useState(false);
   const [updateId, setUpateId] = useState("");
@@ -18,7 +18,7 @@ function Noteitem(prop) {
     setUpateId(e.target.id);
     setUpdateForm(prop.note);
   };
-  let context = useContext(NotesContext);
+  let context = useContext(Context);
   let { deleteNote, updateNote } = context;
   async function handleClick(e) {
     let response = await deleteNote(e.target.id);

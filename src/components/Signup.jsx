@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import { useState, useContext, useEffect } from "react";
-import NotesContext from "../context/notes/NotesContext";
+import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
 function Signup(props) {
   useEffect(() => {
@@ -13,7 +15,7 @@ function Signup(props) {
     props.setProgress(100);
   }, []);
   let navigate = useNavigate();
-  let context = useContext(NotesContext);
+  let context = useContext(Context);
   let { signUp } = context;
   const [signupCredentials, setSignupCredentials] = useState({
     name: "",

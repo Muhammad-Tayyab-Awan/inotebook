@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import NotesContext from "../context/notes/NotesContext";
+import Context from "../context/Context";
 import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
-  let context = useContext(NotesContext);
+  let context = useContext(Context);
   let { isLoggedIn } = context;
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(
