@@ -132,6 +132,18 @@ function App() {
     }
     return JsonResponse;
   }
+  async function getUserData() {
+    let token = localStorage.getItem("auth-token");
+    let response = await fetch(`${URL}auth/getuser`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token
+      }
+    });
+    let JsonResponse = await response.json();
+    return JsonResponse;
+  }
   return (
     <>
       <Context.Provider
@@ -145,7 +157,8 @@ function App() {
           loginUser: loginUser,
           logoutUser: logoutUser,
           signUp: signUp,
-          isLoggedIn: isLoggedIn
+          isLoggedIn: isLoggedIn,
+          getUserData: getUserData
         }}
       >
         <BrowserRouter>

@@ -2,14 +2,20 @@ import { useState, useEffect, useContext } from "react";
 import Context from "../context/Context";
 import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
+import closeIcon from "../assets/close.svg";
 const Navbar = () => {
   let context = useContext(Context);
-  let { isLoggedIn } = context;
+  let { getUserData, isLoggedIn } = context;
   const [isOpen, setIsOpen] = useState(false);
+  const [sideBar, setSideBar] = useState(false);
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
   );
-
+  const [loggedInUser, setLoggedInUser] = useState({
+    name: "",
+    email: "",
+    joinedOn: ""
+  });
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -31,6 +37,11 @@ const Navbar = () => {
       }
     });
   };
+  async function toggleSideBar() {
+    setSideBar(!sideBar);
+    let { name, email, date } = await getUserData();
+    setLoggedInUser({ name: name, email: email, joinedOn: date });
+  }
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md w-full fixed top-0 left-0 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,17 +97,47 @@ const Navbar = () => {
                 </NavLink>
               </>
             ) : (
-              <NavLink
-                to="/logout"
-                className={(e) => {
-                  return e.isActive
-                    ? "bg-slate-500 text-gray-200 dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-bold"
-                    : "text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium";
-                }}
+              <button
+                onClick={toggleSideBar}
+                className="text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium focus-visible:outline-none"
               >
-                Logout
-              </NavLink>
+                Acount
+              </button>
             )}
+            <div
+              className={`absolute bg-orange-500 dark:bg-slate-400 ${
+                sideBar && isLoggedIn ? "right-0" : "-right-full"
+              } top-0 h-screen w-1/4 p-4 shadow-lg shadow-black rounded-tl-xl rounded-bl-xl`}
+            >
+              <button
+                title="Close"
+                onClick={toggleSideBar}
+                className="absolute top-1 left-1 hover:bg-slate-300 transition focus-visible:outline-none rounded-full bg-white"
+              >
+                <img src={closeIcon} alt="close" className="h-6 w-6" />
+              </button>
+              <div className="flex flex-col w-full h-full justify-start items-center py-2">
+                <h3 className="text-lg font-semibold text-white">Acount</h3>
+                <div className="w-full flex flex-col justify-start items-center font-semibold m-3">
+                  <div className="my-3" title="Name">
+                    {loggedInUser.name}
+                  </div>
+                  <div className="my-3" title="Email">
+                    {loggedInUser.email}
+                  </div>
+                  <div className="my-3" title="Joined On">
+                    {loggedInUser.joinedOn.split("T")[0]}
+                  </div>
+                </div>
+                <NavLink
+                  onClick={toggleSideBar}
+                  to="/logout"
+                  className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-xl focus-visible:outline-none"
+                >
+                  Logout
+                </NavLink>
+              </div>
+            </div>
             <button
               onClick={toggleTheme}
               className="text-gray-800 dark:text-gray-200 px-3 py-2 rounded-md focus:outline-none"
