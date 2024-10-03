@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import express from "express";
 import Users from "../models/Users.js";
 const router = express.Router();

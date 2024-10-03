@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import JWT from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET;
 function getUser(req, res, next) {

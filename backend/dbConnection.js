@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import mongoose from "mongoose";
 const mongo_URL = process.env.DB_URL;
 async function main() {
