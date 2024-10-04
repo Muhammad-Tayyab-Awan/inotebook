@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
 import Context from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 function Newnote(props) {
+  let navigate = useNavigate();
   let context = useContext(Context);
   let { addNote } = context;
   const [note, setForm] = useState({ title: "", description: "", tag: "" });
@@ -16,7 +18,12 @@ function Newnote(props) {
       props.notify.success("Note added successfully!");
       setForm({ title: "", description: "", tag: "" });
     } else {
-      props.notify.error("Not not added!");
+      if (response.error === "Token is not valid!") {
+        navigate("/login");
+        props.notify.error(response.error);
+      } else {
+        props.notify.error(response.error);
+      }
     }
   }
   return (

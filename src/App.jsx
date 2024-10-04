@@ -30,7 +30,6 @@ function App() {
     });
     let JsonResponse = await response.json();
     setNotes(JsonResponse.notes);
-    console.log(JsonResponse);
     if (JsonResponse.success) {
       return JsonResponse;
     } else {
@@ -61,7 +60,7 @@ function App() {
       },
       body: JSON.stringify({ ...newNotes })
     });
-    let JsonResponse = response.json();
+    let JsonResponse = await response.json();
     fetchNotes();
     return JsonResponse;
   }
