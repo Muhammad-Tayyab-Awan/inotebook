@@ -11,7 +11,12 @@ function Notes(props) {
   let { Notes, fetchNotes } = context;
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
-      fetchNotes();
+      fetchNotes().then((response) => {
+        if (!response.success) {
+          navigate("/login");
+          props.notify.error("Client Side Tempering Found!");
+        }
+      });
     } else {
       props.notify.error("Please login first!");
       navigate("/login");

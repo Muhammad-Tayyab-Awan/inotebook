@@ -30,6 +30,15 @@ function App() {
     });
     let JsonResponse = await response.json();
     setNotes(JsonResponse.notes);
+    console.log(JsonResponse);
+    if (JsonResponse.success) {
+      return JsonResponse;
+    } else {
+      localStorage.removeItem("auth-token");
+      setIsLoggedIN(localStorage.getItem("auth-token"));
+      setNotes([]);
+      return JsonResponse;
+    }
   }
   async function addNote(note) {
     let token = localStorage.getItem("auth-token");
@@ -116,6 +125,7 @@ function App() {
   function logoutUser() {
     localStorage.removeItem("auth-token");
     setIsLoggedIN(localStorage.getItem("auth-token"));
+    setNotes([]);
   }
   async function signUp(credentials) {
     let response = await fetch(`${URL}auth/signup`, {
