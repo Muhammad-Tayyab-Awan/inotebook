@@ -8,8 +8,13 @@ const Navbar = () => {
   let { getUserData, isLoggedIn } = context;
   const [isOpen, setIsOpen] = useState(false);
   const [sideBar, setSideBar] = useState(false);
+  let date = new Date();
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
+    localStorage.getItem("theme")
+      ? localStorage.getItem("theme") === "dark"
+      : date.getHours() < 17 && date.getHours() > 6
+      ? false
+      : true
   );
   const [loggedInUser, setLoggedInUser] = useState({
     name: "",
