@@ -132,7 +132,7 @@ const Navbar = () => {
                 <NavLink
                   onClick={toggleSideBar}
                   to="/logout"
-                  className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-xl focus-visible:outline-none"
+                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none"
                 >
                   Logout
                 </NavLink>
@@ -287,7 +287,7 @@ const Navbar = () => {
                 <NavLink
                   onClick={toggleSideBar}
                   to="/logout"
-                  className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-xl focus-visible:outline-none"
+                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none"
                 >
                   Logout
                 </NavLink>
