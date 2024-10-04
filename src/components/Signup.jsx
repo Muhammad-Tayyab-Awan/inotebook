@@ -3,6 +3,8 @@
 import { useState, useContext, useEffect } from "react";
 import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import eyeIcon from "../assets/eye.svg";
+import eyeCrossIcon from "../assets/eyecross.svg";
 function Signup(props) {
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
@@ -14,6 +16,8 @@ function Signup(props) {
     document.title = "iNotebook - Register Now";
     props.setProgress(100);
   }, []);
+  let [passShow, setPassShow] = useState(false);
+  let [cPassShow, setcPassShow] = useState(false);
   let navigate = useNavigate();
   let context = useContext(Context);
   let { signUp } = context;
@@ -39,7 +43,7 @@ function Signup(props) {
         navigate("/");
       } else {
         if (Array.isArray(response.errors)) {
-          response.errors.map((err) => {
+          response.errors.map(err => {
             props.notify.error(err.msg);
           });
         } else {
@@ -95,33 +99,53 @@ function Signup(props) {
             <label htmlFor="password" className="text-lg font-semibold">
               Password
             </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              minLength={8}
-              placeholder="Enter Password"
-              required
-              onChange={changehandle}
-              value={signupCredentials.password}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
-            />
+            <div className="flex w-9/12 relative">
+              <input
+                type={passShow ? "text" : "password"}
+                id="password"
+                name="password"
+                minLength={8}
+                placeholder="Enter Password"
+                required
+                onChange={changehandle}
+                value={signupCredentials.password}
+                className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              />
+              <img
+                onClick={() => {
+                  setPassShow(!passShow);
+                }}
+                src={passShow ? eyeCrossIcon : eyeIcon}
+                alt="Show Password"
+                className="h-6 w-6 absolute top-[.25rem] right-[.5rem]"
+              />
+            </div>
           </div>
           <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label htmlFor="cpassword" className="text-lg font-semibold">
               Confirm Password
             </label>
-            <input
-              type="password"
-              id="cpassword"
-              name="cpassword"
-              minLength={8}
-              placeholder="Confirm Password"
-              required
-              value={cPassword}
-              onChange={(e) => setCPassword(e.target.value)}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
-            />
+            <div className="flex w-9/12 relative">
+              <input
+                type={cPassShow ? "text" : "password"}
+                id="cpassword"
+                name="cpassword"
+                minLength={8}
+                placeholder="Confirm Password"
+                required
+                value={cPassword}
+                onChange={e => setCPassword(e.target.value)}
+                className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              />
+              <img
+                onClick={() => {
+                  setcPassShow(!cPassShow);
+                }}
+                src={cPassShow ? eyeCrossIcon : eyeIcon}
+                alt="Show Password"
+                className="h-6 w-6 absolute top-[.25rem] right-[.5rem]"
+              />
+            </div>
           </div>
           <button className="bg-[#111827] dark:bg-white dark:text-[#111827] py-1 px-3 text-white rounded-lg">
             Signup
