@@ -101,11 +101,11 @@ const Navbar = () => {
                 onClick={toggleSideBar}
                 className="text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 px-3 py-2 rounded-md text-sm font-medium focus-visible:outline-none"
               >
-                Acount
+                Account
               </button>
             )}
             <div
-              className={`absolute bg-orange-500 dark:bg-slate-400 ${
+              className={`absolute bg-orange-500 dark:bg-slate-400 opacity-90 ${
                 sideBar && isLoggedIn ? "right-0" : "-right-full"
               } top-0 h-screen md:w-1/3 lg:w-1/4 p-4 shadow-lg shadow-black rounded-tl-xl rounded-bl-xl`}
             >
@@ -117,7 +117,7 @@ const Navbar = () => {
                 <img src={closeIcon} alt="close" className="h-6 w-6" />
               </button>
               <div className="flex flex-col w-full h-full justify-start items-center py-2">
-                <h3 className="text-lg font-semibold text-white">Acount</h3>
+                <h3 className="text-lg font-semibold text-white">Account</h3>
                 <div className="w-full flex flex-col justify-start items-center font-semibold m-3">
                   <div className="my-3" title="Name">
                     {loggedInUser.name}
@@ -256,11 +256,11 @@ const Navbar = () => {
                 onClick={toggleSideBar}
                 className="text-gray-800 text-center w-full dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 block px-3 py-2 rounded-md text-base font-medium focus-visible:outline-none"
               >
-                Acount
+                Account
               </button>
             )}
             <div
-              className={`absolute bg-orange-500 dark:bg-slate-400 ${
+              className={`absolute bg-orange-500 dark:bg-slate-400 opacity-90 ${
                 sideBar && isLoggedIn ? "right-0" : "-right-full"
               } top-[0] h-screen p-4 shadow-lg shadow-black rounded-tl-xl rounded-bl-xl`}
             >
@@ -272,7 +272,7 @@ const Navbar = () => {
                 <img src={closeIcon} alt="close" className="h-6 w-6" />
               </button>
               <div className="flex flex-col w-full h-full justify-start items-center py-2">
-                <h3 className="text-lg font-semibold text-white">Acount</h3>
+                <h3 className="text-lg font-semibold text-white">Account</h3>
                 <div className="w-full flex flex-col justify-start items-center font-semibold m-3">
                   <div className="my-3" title="Name">
                     {loggedInUser.name}
