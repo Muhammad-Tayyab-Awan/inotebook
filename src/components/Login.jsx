@@ -3,6 +3,8 @@
 import { useState, useContext, useEffect } from "react";
 import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import eyeIcon from "../assets/eye.svg";
+import eyeCrossIcon from "../assets/eyecross.svg";
 function Login(props) {
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
@@ -12,6 +14,7 @@ function Login(props) {
     document.title = "iNotebook - Login Now";
     props.setProgress(100);
   }, []);
+  let [passShow, setPassShow] = useState(false);
   let context = useContext(Context);
   let navigate = useNavigate();
   let { loginUser } = context;
@@ -33,7 +36,7 @@ function Login(props) {
       navigate("/");
     } else {
       if (Array.isArray(response.errors)) {
-        response.errors.map((err) => {
+        response.errors.map(err => {
           props.notify.error(err.msg);
         });
       } else {
@@ -70,17 +73,27 @@ function Login(props) {
             <label htmlFor="password" className="text-lg font-semibold">
               Password
             </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              minLength={8}
-              placeholder="Enter Password"
-              required
-              onChange={changehandle}
-              value={loginCredentials.password}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
-            />
+            <div className="w-9/12 flex relative">
+              <input
+                type={passShow ? "text" : "password"}
+                id="password"
+                name="password"
+                minLength={8}
+                placeholder="Enter Password"
+                required
+                onChange={changehandle}
+                value={loginCredentials.password}
+                className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              />
+              <img
+                onClick={() => {
+                  setPassShow(!passShow);
+                }}
+                src={passShow ? eyeCrossIcon : eyeIcon}
+                alt="Show Password"
+                className="h-6 w-6 absolute top-[.25rem] right-[.5rem]"
+              />
+            </div>
           </div>
           <button className="bg-[#111827] dark:bg-white dark:text-[#111827] py-1 px-3 text-white rounded-lg">
             Login
