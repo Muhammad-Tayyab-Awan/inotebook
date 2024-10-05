@@ -2,7 +2,9 @@ import deleteIcon from "../assets/delete.svg";
 import editIcon from "../assets/edit.svg";
 import { useState, useContext } from "react";
 import Context from "../context/Context";
+import { useNavigate } from "react-router-dom";
 function Noteitem(prop) {
+  let navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [updateId, setUpateId] = useState("");
   const [updatingNote, setUpdateForm] = useState({
@@ -25,7 +27,12 @@ function Noteitem(prop) {
     if (response.success) {
       prop.notify.success("Note deleted successfully!");
     } else {
-      prop.notify.error(response.error);
+      if (response.error === "Token is not valid!") {
+        navigate("/login");
+        prop.notify.error(response.error);
+      } else {
+        prop.notify.error(response.error);
+      }
     }
   }
   async function handleUpdate(e) {
@@ -35,7 +42,12 @@ function Noteitem(prop) {
       prop.notify.success(response.message);
       toggleModal(e);
     } else {
-      prop.notify.error(response.error);
+      if (response.error === "Token is not valid!") {
+        navigate("/login");
+        prop.notify.error(response.error);
+      } else {
+        prop.notify.error(response.error);
+      }
     }
   }
   return (
