@@ -43,7 +43,7 @@ function Signup(props) {
         navigate("/");
       } else {
         if (Array.isArray(response.errors)) {
-          response.errors.map(err => {
+          response.errors.map((err) => {
             props.notify.error(err.msg);
           });
         } else {
@@ -96,6 +96,7 @@ function Signup(props) {
               name="email"
               placeholder="Enter Email"
               required
+              autoComplete="username"
               onChange={changehandle}
               value={signupCredentials.email}
               className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
@@ -116,6 +117,7 @@ function Signup(props) {
                 minLength={8}
                 placeholder="Enter Password"
                 required
+                autoComplete="new-password"
                 onChange={changehandle}
                 value={signupCredentials.password}
                 className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
@@ -145,8 +147,9 @@ function Signup(props) {
                 minLength={8}
                 placeholder="Confirm Password"
                 required
+                autoComplete="new-password"
                 value={cPassword}
-                onChange={e => setCPassword(e.target.value)}
+                onChange={(e) => setCPassword(e.target.value)}
                 className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
               />
               <img

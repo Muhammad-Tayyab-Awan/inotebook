@@ -36,7 +36,7 @@ function Login(props) {
       navigate("/");
     } else {
       if (Array.isArray(response.errors)) {
-        response.errors.map(err => {
+        response.errors.map((err) => {
           props.notify.error(err.msg);
         });
       } else {
@@ -66,6 +66,7 @@ function Login(props) {
               id="email"
               name="email"
               placeholder="Enter Email"
+              autoComplete="username"
               required
               onChange={changehandle}
               value={loginCredentials.email}
@@ -84,6 +85,7 @@ function Login(props) {
                 type={passShow ? "text" : "password"}
                 id="password"
                 name="password"
+                autoComplete="current-password"
                 minLength={8}
                 placeholder="Enter Password"
                 required
