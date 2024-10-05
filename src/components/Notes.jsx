@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import Context from "../context/Context";
 import Noteitem from "./Noteitem";
 import Newnote from "./Newnote";
+import Filter from "./Filter";
 function Notes(props) {
   let navigate = useNavigate();
   let context = useContext(Context);
-  let { Notes, fetchNotes } = context;
+  let { Notes, fetchNotes, filter } = context;
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
       fetchNotes().then((response) => {
@@ -32,13 +33,26 @@ function Notes(props) {
         <h2 className="my-2 text-2xl font-bold text-center text-black dark:text-white">
           All Notes
         </h2>
+        <div className="my-4 w-1/4 mx-auto flex justify-center items-center">
+          {Notes.length > 0 && <Filter Notes={Notes} />}
+        </div>
         <div className="my-4 flex flex-wrap justify-center items-baseline gap-3">
           {Notes.length > 0 ? (
-            Notes.map((note) => {
-              return (
-                <Noteitem key={note._id} note={note} notify={props.notify} />
-              );
-            })
+            filter === "All" ? (
+              Notes.map((note) => {
+                return (
+                  <Noteitem key={note._id} note={note} notify={props.notify} />
+                );
+              })
+            ) : (
+              Notes.filter((note) => {
+                return note.tag === filter;
+              }).map((note) => {
+                return (
+                  <Noteitem key={note._id} note={note} notify={props.notify} />
+                );
+              })
+            )
           ) : (
             <div>No Notes Found</div>
           )}

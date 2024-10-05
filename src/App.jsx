@@ -14,6 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Context from "./context/Context.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
+  const [filter, setFilter] = useState("All");
   const [progress, setProgress] = useState(10);
   const [notes, setNotes] = useState([]);
   const [isLoggedIn, setIsLoggedIN] = useState(
@@ -125,6 +126,7 @@ function App() {
     localStorage.removeItem("auth-token");
     setIsLoggedIN(localStorage.getItem("auth-token"));
     setNotes([]);
+    setFilter("All");
   }
   async function signUp(credentials) {
     let response = await fetch(`${URL}auth/signup`, {
@@ -174,7 +176,9 @@ function App() {
           logoutUser: logoutUser,
           signUp: signUp,
           isLoggedIn: isLoggedIn,
-          getUserData: getUserData
+          getUserData: getUserData,
+          filter: filter,
+          setFilter: setFilter
         }}
       >
         <BrowserRouter>
@@ -186,7 +190,7 @@ function App() {
             progress={progress}
             onLoaderFinished={() => setProgress(0)}
           />
-          <Navbar notify={toast}/>
+          <Navbar notify={toast} />
           <Toaster position="bottom-right" reverseOrder={false} />
           <Routes>
             <Route
