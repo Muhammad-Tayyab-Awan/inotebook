@@ -17,6 +17,7 @@ function App() {
   const [filter, setFilter] = useState("All");
   const [progress, setProgress] = useState(10);
   const [notes, setNotes] = useState([]);
+  const [sideBar, setSideBar] = useState(false);
   const [isLoggedIn, setIsLoggedIN] = useState(
     localStorage.getItem("auth-token")
   );
@@ -127,6 +128,7 @@ function App() {
     setIsLoggedIN(localStorage.getItem("auth-token"));
     setNotes([]);
     setFilter("All");
+    setSideBar(false);
   }
   async function signUp(credentials) {
     let response = await fetch(`${URL}auth/signup`, {
@@ -178,7 +180,9 @@ function App() {
           isLoggedIn: isLoggedIn,
           getUserData: getUserData,
           filter: filter,
-          setFilter: setFilter
+          setFilter: setFilter,
+          sideBar: sideBar,
+          setSideBar: setSideBar
         }}
       >
         <BrowserRouter>

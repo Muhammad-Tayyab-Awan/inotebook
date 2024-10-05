@@ -6,9 +6,8 @@ import closeIcon from "../assets/close.svg";
 const Navbar = (prop) => {
   let navigate = useNavigate();
   let context = useContext(Context);
-  let { getUserData, isLoggedIn } = context;
+  let { getUserData, isLoggedIn, sideBar, setSideBar } = context;
   const [isOpen, setIsOpen] = useState(false);
-  const [sideBar, setSideBar] = useState(false);
   let date = new Date();
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme")
