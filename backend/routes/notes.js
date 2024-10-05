@@ -19,8 +19,8 @@ router.get("/getallnotes", getUser, async (req, res) => {
 router.post(
   "/addnote",
   [
-    body("title", "Title must contain 3 chars").isLength({ min: 10 }),
-    body("description", "Description must contain 3 chars").isLength({
+    body("title", "Title must contain 10 chars").isLength({ min: 10 }),
+    body("description", "Description must contain 25 chars").isLength({
       min: 25
     })
   ],
