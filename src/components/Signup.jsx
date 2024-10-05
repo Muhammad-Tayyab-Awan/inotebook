@@ -62,10 +62,13 @@ function Signup(props) {
         </h1>
         <form
           onSubmit={handleSumbit}
-          className="bg-white w-full dark:bg-[#111827] mx-auto h-96 sm:w-full md:w-full lg:w-full p-4 rounded-lg py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
+          className="bg-white w-full dark:bg-[#111827] mx-auto h-72 md:h-96 sm:w-full md:w-full lg:w-full md:px-4 rounded-lg py-2 md:py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
         >
-          <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
-            <label htmlFor="name" className="text-lg font-semibold">
+          <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
+            <label
+              htmlFor="name"
+              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+            >
               Name
             </label>
             <input
@@ -80,8 +83,11 @@ function Signup(props) {
               className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
             />
           </div>
-          <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
-            <label htmlFor="email" className="text-lg font-semibold">
+          <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
+            <label
+              htmlFor="email"
+              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+            >
               Email
             </label>
             <input
@@ -95,8 +101,11 @@ function Signup(props) {
               className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
             />
           </div>
-          <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
-            <label htmlFor="password" className="text-lg font-semibold">
+          <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
+            <label
+              htmlFor="password"
+              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+            >
               Password
             </label>
             <div className="flex w-9/12 relative">
@@ -117,12 +126,15 @@ function Signup(props) {
                 }}
                 src={passShow ? eyeCrossIcon : eyeIcon}
                 alt="Show Password"
-                className="h-6 w-6 absolute top-[.25rem] right-[.5rem]"
+                className="h-5 w-5 md:h-6 md:w-6 absolute top-[.41rem] right-[.45rem] md:top-[.25rem] md:right-[.5rem]"
               />
             </div>
           </div>
-          <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
-            <label htmlFor="cpassword" className="text-lg font-semibold">
+          <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
+            <label
+              htmlFor="cpassword"
+              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+            >
               Confirm Password
             </label>
             <div className="flex w-9/12 relative">
@@ -143,7 +155,7 @@ function Signup(props) {
                 }}
                 src={cPassShow ? eyeCrossIcon : eyeIcon}
                 alt="Show Password"
-                className="h-6 w-6 absolute top-[.25rem] right-[.5rem]"
+                className="h-5 w-5 md:h-6 md:w-6 absolute top-[.41rem] right-[.45rem] md:top-[.25rem] md:right-[.5rem]"
               />
             </div>
           </div>
