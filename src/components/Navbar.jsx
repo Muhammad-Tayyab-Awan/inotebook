@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import Context from "../context/Context";
 import toast from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import closeIcon from "../assets/close.svg";
-const Navbar = () => {
+const Navbar = (prop) => {
+  let navigate = useNavigate();
   let context = useContext(Context);
   let { getUserData, isLoggedIn } = context;
   const [isOpen, setIsOpen] = useState(false);
@@ -43,9 +44,16 @@ const Navbar = () => {
     });
   };
   async function toggleSideBar() {
-    setSideBar(!sideBar);
-    let { name, email, date } = await getUserData();
-    setLoggedInUser({ name: name, email: email, joinedOn: date });
+    let response = await getUserData();
+    if (response.success) {
+      let { name, email, date } = response.user;
+      setLoggedInUser({ name: name, email: email, joinedOn: date });
+      setSideBar(!sideBar);
+    } else {
+      console.log("in")
+      navigate("/login");
+      prop.notify.error(response.error);
+    }
   }
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md w-full fixed top-0 left-0 z-10">

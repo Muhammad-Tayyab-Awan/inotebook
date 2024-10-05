@@ -151,7 +151,14 @@ function App() {
       }
     });
     let JsonResponse = await response.json();
-    return JsonResponse;
+    if (JsonResponse.success) {
+      return JsonResponse;
+    } else {
+      localStorage.removeItem("auth-token");
+      setIsLoggedIN(localStorage.getItem("auth-token"));
+      setNotes([]);
+      return JsonResponse;
+    }
   }
   return (
     <>
@@ -179,7 +186,7 @@ function App() {
             progress={progress}
             onLoaderFinished={() => setProgress(0)}
           />
-          <Navbar />
+          <Navbar notify={toast}/>
           <Toaster position="bottom-right" reverseOrder={false} />
           <Routes>
             <Route
