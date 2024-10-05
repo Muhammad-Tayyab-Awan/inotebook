@@ -52,10 +52,13 @@ function Login(props) {
         </h1>
         <form
           onSubmit={handleSumbit}
-          className="bg-white w-full dark:bg-[#111827] mx-auto h-72 sm:w-full md:w-full lg:w-full p-4 rounded-lg py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
+          className="bg-white w-full dark:bg-[#111827] mx-auto h-60 md:h-72 sm:w-full md:w-full lg:w-full md:px-4 rounded-lg py-2 md:py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
         >
           <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
-            <label htmlFor="email" className="text-lg font-semibold">
+            <label
+              htmlFor="email"
+              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+            >
               Email
             </label>
             <input
@@ -70,7 +73,10 @@ function Login(props) {
             />
           </div>
           <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
-            <label htmlFor="password" className="text-lg font-semibold">
+            <label
+              htmlFor="password"
+              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+            >
               Password
             </label>
             <div className="w-9/12 flex relative">
