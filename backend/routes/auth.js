@@ -13,8 +13,15 @@ router.post(
   [
     body("name", "Name must conatin at least 8 chars").isLength({ min: 8 }),
     body("email", "Please enter correct eamil").isEmail(),
-    body("password", "password must conatin at least 8 chars").isLength({
-      min: 8
+    body(
+      "password",
+      "Password must contain at Least 3 numbers, 3 lowercase chars, 1 symbol and 1 uppercase char"
+    ).isStrongPassword({
+      minLength: 8,
+      minNumbers: 3,
+      minLowercase: 3,
+      minSymbols: 1,
+      minUppercase: 1
     })
   ],
   async (req, res) => {
