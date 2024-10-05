@@ -50,7 +50,6 @@ const Navbar = (prop) => {
       setLoggedInUser({ name: name, email: email, joinedOn: date });
       setSideBar(!sideBar);
     } else {
-      console.log("in")
       navigate("/login");
       prop.notify.error(response.error);
     }
