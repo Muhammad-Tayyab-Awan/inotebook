@@ -45,14 +45,14 @@ function Note(prop) {
   return (
     <div className="min-h-[calc(100vh-9.5rem)] dark:bg-[#776e6e] bg-yellow-500 pt-16 pb-10">
       {found ? (
-        <div className="mx-auto bg-white dark:bg-[#111827] text-[#111827] dark:text-white w-[95%] md:w-3/4 py-6 my-4 rounded-lg shadow-2xl shadow-black">
-          <h2 className="text-xl md:text-2xl w-[90%] md:w-[80%] font-semibold text-center py-4">
+        <div className="mx-auto bg-white dark:bg-[#111827] text-[#111827] dark:text-white w-[95%] md:w-3/4 lg:w-3/5 py-6 my-4 rounded-lg shadow-2xl shadow-black">
+          <h2 className="text-xl md:text-2xl font-semibold text-center py-4">
             {indNote.title}
           </h2>
-          <p className="text-lg w-[90%] md:w-[80%] mx-auto py-4">
+          <p className="text-lg w-[90%] md:w-[80%] mx-auto py-4 text-justify">
             {indNote.description}
           </p>
-          <div className="flex flex-col md:flex-row md:justify-around md:items-center w-[90%] md:w-[80%] mx-auto py-2">
+          <div className="flex flex-col justify-center items-start md:flex-row md:justify-around md:items-center w-[90%] md:w-[80%] mx-auto py-2 gap-4">
             <p>
               Tag:&nbsp;<span className="font-bold">{indNote.tag}</span>
             </p>
