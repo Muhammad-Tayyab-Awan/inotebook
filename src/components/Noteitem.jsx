@@ -67,8 +67,11 @@ function Noteitem(prop) {
             </div>
             <div>
               <from className="py-4 flex flex-col justify-center items-center gap-5 w-full bg-yellow-500 dark:bg-[#776e6e]">
-                <div className="flex gap-2 items-center justify-between w-[90%]">
-                  <label htmlFor="uptitle" className="text-lg font-semibold">
+                <div className="flex flex-col md:flex-row gap-2 items-center justify-between w-[90%]">
+                  <label
+                    htmlFor="uptitle"
+                    className="text-md md:text-lg font-semibold"
+                  >
                     Title
                   </label>
                   <input
@@ -79,14 +82,14 @@ function Noteitem(prop) {
                     placeholder="Enter Title"
                     minLength={10}
                     required
-                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full md:w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
                     onChange={handleChange}
                   />
                 </div>
-                <div className="flex gap-2 items-baseline justify-between w-[90%]">
+                <div className="flex flex-col md:flex-row gap-2 items-center justify-between w-[90%]">
                   <label
                     htmlFor="updescription"
-                    className="text-lg font-semibold"
+                    className="text-md md:text-lg font-semibold"
                   >
                     Description
                   </label>
@@ -97,12 +100,15 @@ function Noteitem(prop) {
                     required
                     minLength={25}
                     value={updatingNote.description}
-                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 min-h-40 max-h-72 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full md:w-9/12 min-h-40 max-h-72 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
                     onChange={handleChange}
                   ></textarea>
                 </div>
-                <div className="flex gap-2 items-center justify-between w-[90%]">
-                  <label htmlFor="uptag" className="text-lg font-semibold">
+                <div className="flex flex-col md:flex-row gap-2 items-center justify-between w-[90%]">
+                  <label
+                    htmlFor="uptag"
+                    className="text-md md:text-lg font-semibold"
+                  >
                     Tag
                   </label>
                   <input
@@ -111,7 +117,7 @@ function Noteitem(prop) {
                     name="tag"
                     value={updatingNote.tag}
                     placeholder="Enter Tag"
-                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full md:w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
                     onChange={handleChange}
                   />
                 </div>
