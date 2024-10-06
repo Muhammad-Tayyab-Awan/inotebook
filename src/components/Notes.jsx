@@ -7,6 +7,7 @@ import Noteitem from "./Noteitem";
 import Newnote from "./Newnote";
 import Filter from "./Filter";
 function Notes(props) {
+  let dailyLimit = 50;
   let navigate = useNavigate();
   let context = useContext(Context);
   let { Notes, fetchNotes, filter } = context;
@@ -23,11 +24,25 @@ function Notes(props) {
       navigate("/login");
     }
   }, []);
-
+  let todaysDate = new Date();
+  let allNotes = Notes;
+  let notesAddedToday = allNotes.filter((note) => {
+    let noteDate = new Date(note.date);
+    return (
+      noteDate.toLocaleString(noteDate).split(",")[0] ===
+      todaysDate.toLocaleString(todaysDate).split(",")[0]
+    );
+  });
   return (
     <>
       <div className="w-[95%] sm:w-[85%] md:w-9/12 lg:w-3/5 mx-auto p-4">
-        <Newnote notify={props.notify} />
+        {notesAddedToday.length < dailyLimit ? (
+          <Newnote notify={props.notify} />
+        ) : (
+          <div className="text-2xl flex justify-center items-center py-8 text-red-700 font-bold dark:text-red-900">
+            You have exceeded daily limit of adding notes
+          </div>
+        )}
       </div>
       <div className="w-[95%] sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[85%] mx-auto p-4">
         <h2 className="my-2 text-2xl font-bold text-center text-black dark:text-white">
