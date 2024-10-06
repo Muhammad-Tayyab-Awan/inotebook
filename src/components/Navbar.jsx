@@ -46,7 +46,9 @@ const Navbar = (prop) => {
     let response = await getUserData();
     if (response.success) {
       let { name, email, date } = response.user;
-      setLoggedInUser({ name: name, email: email, joinedOn: date });
+      let formatDate = new Date(date);
+      formatDate = formatDate.toLocaleString(formatDate);
+      setLoggedInUser({ name: name, email: email, joinedOn: formatDate });
       setSideBar(!sideBar);
     } else {
       navigate("/login");
@@ -137,7 +139,7 @@ const Navbar = (prop) => {
                     {loggedInUser.email}
                   </div>
                   <div className="my-3" title="Joined On">
-                    {loggedInUser.joinedOn.split("T")[0]}
+                    {loggedInUser.joinedOn}
                   </div>
                 </div>
                 <NavLink
@@ -292,7 +294,7 @@ const Navbar = (prop) => {
                     {loggedInUser.email}
                   </div>
                   <div className="my-3" title="Joined On">
-                    {loggedInUser.joinedOn.split("T")[0]}
+                    {loggedInUser.joinedOn}
                   </div>
                 </div>
                 <NavLink
