@@ -117,7 +117,7 @@ router.delete("/delete/:id", getUser, async (req, res) => {
         res.status(401).json({ success: false, error: "Acces Denied!" });
       }
     } else {
-      req.status(404).json({ success: false, error: "Not Found" });
+      res.status(404).json({ success: false, error: "Not Found" });
     }
   } catch (error) {
     res.status(500).json({
