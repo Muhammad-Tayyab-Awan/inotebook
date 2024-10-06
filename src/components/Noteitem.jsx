@@ -2,7 +2,7 @@ import deleteIcon from "../assets/delete.svg";
 import editIcon from "../assets/edit.svg";
 import { useState, useContext } from "react";
 import Context from "../context/Context";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Noteitem(prop) {
   let navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -142,9 +142,12 @@ function Noteitem(prop) {
         </div>
       )}
       <div className="dark:bg-[#111827] bg-white dark:text-white text-[#111827] flex flex-col rounded-lg border border-[#111827] justify-between w-full sm:w-[45%] md:w-[45%] lg:w-[45%] xl:w-[30%] h-56 overflow-y-auto overflow-x-hidden">
-        <h3 className="dark:bg-white bg-[#111827] text-white dark:text-[#111827] text-lg font-semibold justify-center items-center p-2 sticky top-0">
+        <Link
+          to={`/note/${prop.note._id}`}
+          className="dark:bg-white bg-[#111827] text-white dark:text-[#111827] text-lg font-semibold justify-center items-center p-2 sticky top-0"
+        >
           {prop.note.title}
-        </h3>
+        </Link>
         <p className="p-2 text-justify text-sm">{prop.note.description}</p>
         <div className="w-auto p-1 flex justify-start items-center gap-2">
           <span className="bg-[#111827] dark:bg-white text-white dark:text-[#111827] font-semibold py-1 px-2 text-center rounded-md inline-block">

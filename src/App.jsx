@@ -12,6 +12,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 import toast, { Toaster } from "react-hot-toast";
 import Context from "./context/Context.jsx";
+import Note from "./components/note/Note.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
   const [filter, setFilter] = useState("All");
@@ -222,6 +223,10 @@ function App() {
               element={
                 <PrivacyPolicy setProgress={setProgress} notify={toast} />
               }
+            />
+            <Route
+              path="note/:id"
+              element={<Note setProgress={setProgress} notify={toast} />}
             />
           </Routes>
           <Footer />
