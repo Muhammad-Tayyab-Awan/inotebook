@@ -80,7 +80,9 @@ function Notes(props) {
               })
             )
           ) : (
-            <div>No Notes Found</div>
+            <div className="text-2xl flex justify-center items-center py-8 text-red-700 font-bold dark:text-red-900">
+              No Notes Found
+            </div>
           )}
         </div>
       </div>
