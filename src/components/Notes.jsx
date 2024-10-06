@@ -33,8 +33,19 @@ function Notes(props) {
         <h2 className="my-2 text-2xl font-bold text-center text-black dark:text-white">
           All Notes
         </h2>
-        <div className="my-4 w-1/4 mx-auto flex justify-center items-center">
-          {Notes.length > 0 && <Filter Notes={Notes} />}
+        <div className="my-4 w-1/2 mx-auto flex justify-evenly items-center">
+          {Notes.length > 0 && (
+            <Filter
+              Notes={Notes}
+              resultFounds={
+                filter === "All"
+                  ? Notes.length
+                  : Notes.filter((note) => {
+                      return note.tag === filter;
+                    }).length
+              }
+            />
+          )}
         </div>
         <div className="my-4 flex flex-wrap justify-center items-baseline gap-3">
           {Notes.length > 0 ? (
