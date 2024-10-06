@@ -33,7 +33,7 @@ function Notes(props) {
         <h2 className="my-2 text-2xl font-bold text-center text-black dark:text-white">
           All Notes
         </h2>
-        <div className="my-4 w-1/2 mx-auto flex justify-evenly items-center">
+        <div className="my-4 w-3/4 md:w-1/2 mx-auto flex flex-col md:flex-row justify-evenly items-center">
           {Notes.length > 0 && (
             <Filter
               Notes={Notes}

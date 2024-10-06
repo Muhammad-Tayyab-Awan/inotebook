@@ -23,7 +23,7 @@ function Filter(prop) {
         onInput={changeHandler}
         name="filter"
         id="filter"
-        className="bg-[#111827] text-white p-2 dark:bg-white dark:text-[#111827] rounded-lg w-[45%] focus-visible:outline-none font-semibold"
+        className="bg-[#111827] text-white p-2 dark:bg-white dark:text-[#111827] rounded-lg w-[80%] md:w-[45%] focus-visible:outline-none font-semibold"
       >
         <option key={"All"} value={"All"}>
           All
@@ -36,7 +36,7 @@ function Filter(prop) {
           );
         })}
       </select>
-      <div className="flex justify-center items-center text-lg font-semibold w-[45%] text-[#111827] dark:text-white">
+      <div className="flex justify-center items-center text-lg font-semibold w-[80%] md:w-[45%] text-[#111827] dark:text-white">
         {prop.resultFounds === 0 ? "No" : prop.resultFounds}&nbsp;
         {prop.resultFounds > 1 ? "notes" : "note"} found
       </div>
