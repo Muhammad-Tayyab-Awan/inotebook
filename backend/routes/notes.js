@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import Notes from "../models/Notes.js";
+const dailyLimit = 50;
 import getUser from "../middleware/getUser.js";
 import { body, validationResult } from "express-validator";
 router.get("/getallnotes", getUser, async (req, res) => {
@@ -29,14 +30,30 @@ router.post(
     try {
       const result = validationResult(req);
       if (result.isEmpty()) {
-        const { title, description, tag } = req.body;
-        const newNote = await Notes.create({
-          user: req.user.id,
-          title: title,
-          description: description,
-          tag: tag
+        let todaysDate = new Date();
+        let allNotes = await Notes.find({ user: req.user.id });
+        let notesAddedToday = allNotes.filter((note) => {
+          let noteDate = new Date(note.date);
+          return (
+            noteDate.toLocaleString(noteDate).split(",")[0] ===
+            todaysDate.toLocaleString(todaysDate).split(",")[0]
+          );
         });
-        res.status(200).json({ success: true, newNote });
+        if (notesAddedToday.length < dailyLimit) {
+          const { title, description, tag } = req.body;
+          const newNote = await Notes.create({
+            user: req.user.id,
+            title: title,
+            description: description,
+            tag: tag
+          });
+          res.status(200).json({ success: true, newNote });
+        } else {
+          return res.status(403).json({
+            success: false,
+            error: "You Have Exceeded The Daily Limit of 50 notes"
+          });
+        }
       } else {
         return res.status(400).json({ success: false, errors: result.errors });
       }
