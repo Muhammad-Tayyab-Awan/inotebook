@@ -1,6 +1,6 @@
 # iNotebook
 
-### An Online Notekeeping Application
+## An Online Notekeeping Application
 
 **iNotebook** is a responsive online platform where users can manage their notes securely on the cloud. The application offers features like registration, login, note management, and a theme toggle between dark and light modes.
 
@@ -13,6 +13,12 @@
   - A title
   - A description
   - A tag (default is "General")
+- **Read Note**: You can also read a particular note with detail.
+- **Daily Limit**: Each user can daily add only **50** notes.
+- **Filter**: User can also filter notes by tags.
+- **Account Sidebar**: User can easily see his profile details by opening that sidebar.
+- **Update Profile**: User can also update his profile information (name, email).
+- **404 Page Not Found**: Also shows 404 error incase of wrong page request.
 - **Theme Switcher**: Toggle between light and dark themes.
 - **Responsive Design**: The site is fully responsive across different screen sizes.
 - **Authentication**: Login and logout functionality for secure access.
@@ -21,7 +27,7 @@
 
 ### Getting Started
 
-#### Steps to run iNotebook on your local machine:
+#### Steps to run iNotebook on your local machine
 
 1. **Clone the repository**  
    Open a terminal and run the following command:
