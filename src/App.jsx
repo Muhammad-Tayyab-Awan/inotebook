@@ -14,6 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Context from "./context/Context.jsx";
 import Note from "./components/note/Note.jsx";
 import UpdateUser from "./components/UpdateUser.jsx";
+import NotFound from "./components/NotFound.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
   const [filter, setFilter] = useState("All");
@@ -247,6 +248,7 @@ function App() {
               path="note/:id"
               element={<Note setProgress={setProgress} notify={toast} />}
             />
+            <Route path="*" element={<NotFound notify={toast} />} />
           </Routes>
           <Footer />
         </BrowserRouter>
