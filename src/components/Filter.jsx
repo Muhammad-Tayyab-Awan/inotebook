@@ -23,14 +23,14 @@ function Filter(prop) {
         onInput={changeHandler}
         name="filter"
         id="filter"
-        className="bg-[#111827] text-white p-2 dark:bg-white dark:text-[#111827] rounded-lg w-[80%] md:w-[45%] focus-visible:outline-none font-semibold"
+        className="bg-[#111827] text-white p-2 dark:bg-white dark:text-[#111827] rounded-lg w-[80%] md:w-[45%] focus-visible:outline-none font-semibold cursor-pointer"
       >
-        <option key={"All"} value={"All"}>
+        <option key={"All"} value={"All"} className="font-semibold">
           All
         </option>
         {tagsGen(prop.Notes).map((tag) => {
           return (
-            <option key={tag} value={tag}>
+            <option key={tag} value={tag} className="font-semibold">
               {tag}
             </option>
           );
