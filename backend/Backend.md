@@ -1,4 +1,4 @@
-### How to Run Backend
+# How to Run Backend Server
 
 1. **Frontend Setup**: Once you have completed the frontend setup, open a terminal and navigate to the backend folder.
 
@@ -12,10 +12,12 @@
 
    - Create a new file named `.env` in the backend folder.
    - Add the following environment variables to the `.env` file:
+
      ```plaintext
      JWT_SECRET=C0D1GIS8ES7
      DB_URL=<Your MongoDB URL>
      ```
+
      - Replace `<Your MongoDB URL>` with the link to your MongoDB database (either MongoDB Atlas or your local MongoDB).
 
 4. **Run the Backend Server**: To start the development environment, use the following command:
@@ -36,11 +38,12 @@
 
 ### Authentication Routes
 
-|        Route        |                   Description                    | Method |
-| :-----------------: | :----------------------------------------------: | :----: |
-| `/api/auth/signup`  |               Register a new user                |  POST  |
-|  `/api/auth/login`  |             Log in an existing user              |  POST  |
-| `/api/auth/getuser` | Retrieve specific user data (excluding password) |  POST  |
+|        Route        |                       Description                        | Method |
+| :-----------------: | :------------------------------------------------------: | :----: |
+| `/api/auth/signup`  |                   Register a new user                    |  POST  |
+|  `/api/auth/login`  |                 Log in an existing user                  |  POST  |
+| `/api/auth/getuser` |     Retrieve specific user data (excluding password)     |  POST  |
+| `/api/auth/update`  | Update specific user data (excluding password, id, date) |  PUT   |
 
 ### Notes Routes
 
