@@ -13,6 +13,7 @@ import LoadingBar from "react-top-loading-bar";
 import toast, { Toaster } from "react-hot-toast";
 import Context from "./context/Context.jsx";
 import Note from "./components/note/Note.jsx";
+import UpdateUser from "./components/UpdateUser.jsx";
 const URL = "http://localhost:8080/api/";
 function App() {
   const [filter, setFilter] = useState("All");
@@ -165,6 +166,19 @@ function App() {
       return JsonResponse;
     }
   }
+  async function updateUser(data) {
+    let token = localStorage.getItem("auth-token");
+    let response = await fetch(`${URL}auth/update`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token
+      },
+      body: JSON.stringify({ ...data })
+    });
+    let JsonResponse = await response.json();
+    return JsonResponse;
+  }
   return (
     <>
       <Context.Provider
@@ -183,7 +197,8 @@ function App() {
           filter: filter,
           setFilter: setFilter,
           sideBar: sideBar,
-          setSideBar: setSideBar
+          setSideBar: setSideBar,
+          updateUser: updateUser
         }}
       >
         <BrowserRouter>
@@ -217,6 +232,10 @@ function App() {
             <Route
               path="/logout"
               element={<Logout setProgress={setProgress} notify={toast} />}
+            />
+            <Route
+              path="/updateuser"
+              element={<UpdateUser setProgress={setProgress} notify={toast} />}
             />
             <Route
               path="/privacy-policy"
