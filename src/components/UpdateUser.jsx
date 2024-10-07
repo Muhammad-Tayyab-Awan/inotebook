@@ -70,7 +70,7 @@ function UpdateUser(prop) {
         </h1>
         <form
           onSubmit={updateHandler}
-          className="bg-white w-full dark:bg-[#111827] mx-auto h-72 md:h-96 sm:w-full md:w-full lg:w-full md:px-4 rounded-lg py-2 md:py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
+          className="bg-white w-full dark:bg-[#111827] mx-auto h-56 md:h-64 sm:w-full md:w-full lg:w-full md:px-4 rounded-lg py-2 md:py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
         >
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
