@@ -8,7 +8,7 @@ const NotFound = (prop) => {
     prop.notify.error("Oops! Page Not Found");
   }, []);
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] bg-blue-200 flex flex-col items-center justify-center p-4">
+    <div className="min-h-[calc(100vh-9.5rem)] selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white bg-blue-200 flex flex-col items-center justify-center p-4">
       <h1 className="text-6xl font-bold text-red-800">404</h1>
       <h2 className="text-2xl md:text-3xl font-semibold text-red-600 mt-4">
         Oops! Page Not Found

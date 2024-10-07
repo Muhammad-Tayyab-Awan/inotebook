@@ -35,7 +35,7 @@ const Footer = () => {
   let date = new Date();
   let year = date.getFullYear();
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300 py-6 relative bottom-0 w-full">
+    <footer className="bg-gray-100 selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 py-6 relative bottom-0 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">

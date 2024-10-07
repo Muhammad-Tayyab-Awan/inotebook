@@ -8,7 +8,7 @@ function PrivacyPolicy(props) {
     document.title = "iNotebook - Privacy Policy";
   }, []);
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] dark:bg-[#776e6e] bg-yellow-500 pt-16 pb-10">
+    <div className="min-h-[calc(100vh-9.5rem)] dark:bg-[#776e6e] bg-yellow-500 selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
       <div className="mx-auto w-[75%] text-[#111827] dark:text-white py-8 px-4">
         <h1 className="text-2xl font-bold mb-4">
           Privacy Policy for iNotebook

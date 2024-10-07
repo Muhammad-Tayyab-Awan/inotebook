@@ -63,7 +63,7 @@ function Note(prop) {
     }
   };
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] dark:bg-[#776e6e] bg-yellow-500 pt-16 pb-10">
+    <div className="min-h-[calc(100vh-9.5rem)] dark:bg-[#776e6e] bg-yellow-500 selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
       {found ? (
         <div className="mx-auto bg-white border border-black dark:border-white dark:bg-[#111827] text-[#111827] dark:text-white min-h-[60vh] md:min-h-[70vh] w-[95%] md:w-3/4 lg:w-3/5 py-6 my-4 rounded-lg shadow-2xl shadow-black relative">
           <h2 className="text-xl w-[90%] md:w-[80%] md:text-2xl font-semibold text-center py-4 mx-auto">

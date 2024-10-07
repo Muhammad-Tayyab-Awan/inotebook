@@ -25,7 +25,7 @@ function Logout(props) {
     navigate("/login");
   };
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 dark:bg-[#776e6e] pt-16 pb-10">
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 dark:bg-[#776e6e] selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
       <div className="py-2">
         <div className="flex w-[75%] mx-auto flex-wrap h-auto justify-center items-center">
           <div className="flex justify-center items-center">
