@@ -145,9 +145,16 @@ const Navbar = (prop) => {
                 <NavLink
                   onClick={toggleSideBar}
                   to="/logout"
-                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none"
+                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none my-2"
                 >
                   Logout
+                </NavLink>
+                <NavLink
+                  onClick={toggleSideBar}
+                  to="/updateuser"
+                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none my-2"
+                >
+                  Update User
                 </NavLink>
               </div>
             </div>
@@ -300,9 +307,16 @@ const Navbar = (prop) => {
                 <NavLink
                   onClick={toggleSideBar}
                   to="/logout"
-                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none"
+                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none my-2"
                 >
                   Logout
+                </NavLink>
+                <NavLink
+                  onClick={toggleSideBar}
+                  to="/updateuser"
+                  className="bg-slate-100 hover:bg-slate-300 text-black font-bold py-1 px-2 rounded-md focus-visible:outline-none my-2"
+                >
+                  Update User
                 </NavLink>
               </div>
             </div>
