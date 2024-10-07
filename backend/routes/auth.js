@@ -113,4 +113,58 @@ router.post("/getuser", getUser, async (req, res) => {
     });
   }
 });
+router.put(
+  "/update",
+  [
+    body("name", "Name must conatin at least 8 chars").isLength({ min: 8 }),
+    body("email", "Please enter correct eamil").isEmail()
+  ],
+  getUser,
+  async (req, res) => {
+    try {
+      const result = validationResult(req);
+      if (result.isEmpty()) {
+        const userId = req.user.id;
+        const user = await Users.findOne({ _id: userId });
+        let userByEmail = await Users.findOne({ email: req.body.email });
+        if (userByEmail && userByEmail._id.toString() === user._id.toString()) {
+          const updatedUser = {
+            _id: user._id,
+            ...req.body,
+            date: user.date,
+            password: user.password
+          };
+          await Users.findByIdAndUpdate(userId, updatedUser);
+          res
+            .status(200)
+            .json({ success: true, message: "User Data Updated Succesfully!" });
+        } else if (userByEmail) {
+          res.status(400).json({
+            success: false,
+            error: "User with this email already exists"
+          });
+        } else {
+          const updatedUser = {
+            _id: user._id,
+            ...req.body,
+            date: user.date,
+            password: user.password
+          };
+          await Users.findByIdAndUpdate(userId, updatedUser);
+          res
+            .status(200)
+            .json({ success: true, message: "User Data Updated Succesfully!" });
+        }
+      } else {
+        return res.status(400).json({ success: false, error: result.errors });
+      }
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        error: "Error Occured on Server Side",
+        message: error.message
+      });
+    }
+  }
+);
 export default router;
