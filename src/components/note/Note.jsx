@@ -72,7 +72,7 @@ function Note(prop) {
           <p className="text-lg w-[90%] md:w-[80%] mx-auto py-4 text-justify">
             {currNote.description}
           </p>
-          <div className="flex flex-col justify-center items-start justify md:flex-row md:justify-around md:items-center w-[90%] md:w-[80%] mx-auto py-2 gap-4">
+          <div className="flex flex-col justify-center items-start justify md:flex-row md:justify-around md:items-center w-[90%] md:w-[80%] mx-auto py-2 gap-4 md:absolute bottom-4 right-[10%]">
             <p>
               Tag:&nbsp;<span className="font-bold">{currNote.tag}</span>
             </p>
@@ -83,7 +83,7 @@ function Note(prop) {
           </div>
           <button
             onClick={handlePrevNote}
-            className={`px-3 py-1 font-bold absolute bottom-2 left-2 bg-[#111827] dark:bg-white text-white dark:text-[#111827] rounded-lg ${
+            className={`focus-visible:outline-none px-3 py-1 font-bold absolute bottom-2 left-2 bg-[#111827] dark:bg-white text-white dark:text-[#111827] rounded-lg ${
               currentIndex === 0 && "opacity-50 cursor-not-allowed"
             }`}
           >
@@ -91,7 +91,7 @@ function Note(prop) {
           </button>
           <button
             onClick={handleNextNote}
-            className={`px-3 py-1 font-bold absolute bottom-2 right-2 bg-[#111827] dark:bg-white text-white dark:text-[#111827] rounded-lg ${
+            className={`focus-visible:outline-none px-3 py-1 font-bold absolute bottom-2 right-2 bg-[#111827] dark:bg-white text-white dark:text-[#111827] rounded-lg ${
               currentIndex === notesList.length - 1 &&
               "opacity-50 cursor-not-allowed"
             }`}
