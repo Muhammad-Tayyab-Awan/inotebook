@@ -17,6 +17,8 @@ function Notes(props) {
         if (!response.success) {
           navigate("/login");
           props.notify.error("Client Side Tempering Found!");
+        } else {
+          props.setProgress(100);
         }
       });
     } else {

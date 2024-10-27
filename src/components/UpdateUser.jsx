@@ -14,13 +14,14 @@ function UpdateUser(prop) {
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
       document.title = "iNotebook - Update your profile";
-      prop.setProgress(100);
+      prop.setProgress(40);
       getUserData().then((response) => {
         if (response.success) {
           setUpdateCredentials({
             name: response.user.name,
             email: response.user.email
           });
+          prop.setProgress(100);
         } else {
           navigate("/login");
           prop.notify.error(response.error);

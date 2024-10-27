@@ -18,7 +18,7 @@ function Note(prop) {
   let param = useParams();
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
-      prop.setProgress(100);
+      prop.setProgress(40);
     } else {
       prop.notify.error("Please login first!");
       navigate("/login");
@@ -27,6 +27,7 @@ function Note(prop) {
   useEffect(() => {
     fetchNotes().then((response) => {
       if (response.success) {
+        prop.setProgress(100);
         let notes = response.notes;
         setNotesList(notes);
         let foundIndex = notes.findIndex((note) => note._id === param.id);
