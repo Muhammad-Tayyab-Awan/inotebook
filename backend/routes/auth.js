@@ -6,14 +6,14 @@ import expressValidator from "express-validator";
 import bcrypt from "bcryptjs";
 const { body, validationResult } = expressValidator;
 import JWT from "jsonwebtoken";
-const JWT_SECRET = process.env.JWT_SECRET; // * defined secret for jsonnwebtoken
+const JWT_SECRET = process.env.JWT_SECRET; // * defined secret for jsonwebtoken
 import getUser from "../middleware/getUser.js"; // * imported getUser Middleware
-// * route for registring a new user
+// * route for registering a new user
 router.post(
   "/signup",
   [
-    body("name", "Name must conatin at least 8 chars").isLength({ min: 8 }), // * validating name by setting the min-length of name to 8 chars
-    body("email", "Please enter correct eamil").isEmail(), // * validating email by defining that email should be correct email
+    body("name", "Name must contain at least 8 chars").isLength({ min: 8 }), // * validating name by setting the min-length of name to 8 chars
+    body("email", "Please enter correct email").isEmail(), // * validating email by defining that email should be correct email
     body(
       "password",
       "Password must contain at Least 3 numbers, 3 lowercase chars, 1 symbol and 1 uppercase char"
@@ -42,7 +42,7 @@ router.post(
             password: hashedPassword
           }); // * creating a new user
           let token = JWT.sign({ id: user.id }, JWT_SECRET); // * creating token from the id of the new user
-          res.status(200).json({ success: true, authToken: token }); // * sending response with succes message and auth-token
+          res.status(200).json({ success: true, authToken: token }); // * sending response with success message and auth-token
         } else {
           // * in case when user with the email provided by the client exists in the Database
           res.status(400).json({
@@ -58,7 +58,7 @@ router.post(
       // * in case when error occurs on server side
       res.status(500).json({
         success: false,
-        error: "Error Occured on Server Side",
+        error: "Error Occurred on Server Side",
         message: error.message
       }); // ! sending error
     }
@@ -108,7 +108,7 @@ router.post(
       // * in case when error occurs on server side
       res.status(500).json({
         success: false,
-        error: "Error Occured on Server Side",
+        error: "Error Occurred on Server Side",
         message: error.message
       }); // ! sending error
     }
@@ -125,7 +125,7 @@ router.post("/getuser", getUser, async (req, res) => {
     // * in case when error occurs on server side
     res.status(500).json({
       success: false,
-      error: "Error Occured on Server Side",
+      error: "Error Occurred on Server Side",
       message: error.message
     }); // ! sending error
   }
@@ -134,8 +134,8 @@ router.post("/getuser", getUser, async (req, res) => {
 router.put(
   "/update",
   [
-    body("name", "Name must conatin at least 8 chars").isLength({ min: 8 }), // * validating name by setting the min-length of name to 8 chars
-    body("email", "Please enter correct eamil").isEmail() // * validating email by defining that email should be correct email
+    body("name", "Name must contain at least 8 chars").isLength({ min: 8 }), // * validating name by setting the min-length of name to 8 chars
+    body("email", "Please enter correct email").isEmail() // * validating email by defining that email should be correct email
   ],
   getUser,
   async (req, res) => {
@@ -158,7 +158,7 @@ router.put(
           await Users.findByIdAndUpdate(userId, updatedUser); // * updating the user information
           res
             .status(200)
-            .json({ success: true, message: "User Data Updated Succesfully!" }); // * sending response
+            .json({ success: true, message: "User Data Updated Successfully!" }); // * sending response
         } else if (userByEmail) {
           // * in case when other user with the email found in request.body already exists
           res.status(400).json({
@@ -176,7 +176,7 @@ router.put(
           await Users.findByIdAndUpdate(userId, updatedUser); // * updating the user information
           res
             .status(200)
-            .json({ success: true, message: "User Data Updated Succesfully!" }); // * sending response
+            .json({ success: true, message: "User Data Updated Successfully!" }); // * sending response
         }
       } else {
         // * in case when request is not validated successfully
@@ -186,7 +186,7 @@ router.put(
       // * in case when error occurs on server side
       res.status(500).json({
         success: false,
-        error: "Error Occured on Server Side",
+        error: "Error Occurred on Server Side",
         message: error.message
       }); // ! sending error
     }

@@ -18,7 +18,7 @@ const corsOptions = {
   origin: "*",
   credentials: true,
   optionSuccessStatus: 200
-}; // * corsoption in order to run backend and frontend on same server
+}; // * cors option in order to run backend and frontend on same server
 app.use(cors(corsOptions)); // * using cor
 app.use(express.json()); // * using json parsing to parse req.body for further manipulation
 
@@ -43,7 +43,7 @@ app.listen(port, (err) => {
     // * in case when server started with no errors
     console.log(`Server is Running on http://localhost:${port}`); // * printing success message to console
   } else {
-    // * in case when error occured while listening to server
+    // * in case when error occurred while listening to server
     console.log(err.message); // ! printing error message to console
   }
 });

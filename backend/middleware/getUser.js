@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import JWT from "jsonwebtoken";
-const JWT_SECRET = process.env.JWT_SECRET; // * defined secret for jsonnwebtoken
+const JWT_SECRET = process.env.JWT_SECRET; // * defined secret for jsonwebtoken
 function getUser(req, res, next) {
   let token = req.header("auth-token");
   if (!token) {
@@ -20,7 +20,7 @@ function getUser(req, res, next) {
         }); // ! sending error
       } else {
         // * in case when token is valid
-        req.user = response; // * sending reponse
+        req.user = response; // * sending response
         next();
       }
     });

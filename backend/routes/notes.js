@@ -10,12 +10,12 @@ router.get("/getallnotes", getUser, async (req, res) => {
     // * wrapped into trycatch() block to handle errors
     const notes = await Notes.find({ user: req.user.id });
     // * fetching all notes of a particular user
-    res.status(200).json({ success: true, notes: notes }); // * sending reponse with array of fetched notes
+    res.status(200).json({ success: true, notes: notes }); // * sending response with array of fetched notes
   } catch (error) {
     // * in case when error occurs on server side
     res.status(500).json({
       success: false,
-      error: "Error Occured on Server Side",
+      error: "Error Occurred on Server Side",
       message: error.message
     }); // ! sending error
   }
@@ -71,7 +71,7 @@ router.post(
       // * in case when error occurs on server side
       res.status(500).json({
         success: false,
-        error: "Error Occured on Server Side",
+        error: "Error Occurred on Server Side",
         message: error.message
       }); // ! sending error
     }
@@ -113,10 +113,10 @@ router.put(
             res.status(200).json({
               success: true,
               message: "Note updated successfully!"
-            }); // * sedning response
+            }); // * sending response
           } else {
             // * in case when user id of the author of note with the id found in params is not equal to the user id found in token
-            res.status(401).json({ success: false, error: "Acces Denied!" }); // ! sending error
+            res.status(401).json({ success: false, error: "Access Denied!" }); // ! sending error
           }
         } else {
           // * in case when note with the id found in params not present in Database
@@ -130,7 +130,7 @@ router.put(
       // * in case when error occurs on server side
       res.status(500).json({
         success: false,
-        error: "Error Occured on Server Side",
+        error: "Error Occurred on Server Side",
         message: error.message
       }); // ! sending error
     }
@@ -145,11 +145,11 @@ router.delete("/delete/:id", getUser, async (req, res) => {
       // * in case when note with the id found in params present in Database
       if (noteToDelete.user.toString() === req.user.id) {
         // * in case when user id of the author of note with the id found in params is equal to the user id found in token
-        await Notes.findByIdAndDelete(req.params.id); // * deleteing note
+        await Notes.findByIdAndDelete(req.params.id); // * deleting note
         res.json({ success: true, message: "Note Deleted Successfully!" }); // * sending response
       } else {
         // * in case when user id of the author of note with the id found in params is not equal to the user id found in token
-        res.status(401).json({ success: false, error: "Acces Denied!" }); // ! sending error
+        res.status(401).json({ success: false, error: "Access Denied!" }); // ! sending error
       }
     } else {
       // * in case when note with the id found in params not present in Database
@@ -159,7 +159,7 @@ router.delete("/delete/:id", getUser, async (req, res) => {
     // * in case when error occurs on server side
     res.status(500).json({
       success: false,
-      error: "Error Occured on Server Side",
+      error: "Error Occurred on Server Side",
       message: error.message
     }); // ! sending error
   }

@@ -3,12 +3,12 @@ const { Schema } = mongoose; // * imported Schema class from "mongoose"
 const notesSchema = Schema({
   // * defining schema for note collection
   user: {
-    // * user refers to the author of the note and it stores object id of the user refered to the user in user collection (foreign key)
+    // * user refers to the author of the note and it stores object id of the user referred to the user in user collection (foreign key)
     type: Schema.Types.ObjectId,
     ref: "user" // * referencing
   },
   title: {
-    // * titile must be present in the note
+    // * title must be present in the note
     type: String,
     required: true
   },
