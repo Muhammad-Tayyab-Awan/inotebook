@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Noteitem(prop) {
   let navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [updateId, setUpateId] = useState("");
+  const [updateId, setUpdateId] = useState("");
   const [updatingNote, setUpdateForm] = useState({
     title: "",
     description: "",
@@ -17,7 +17,7 @@ function Noteitem(prop) {
   }
   const toggleModal = (e) => {
     setIsOpen(!isOpen);
-    setUpateId(e.target.id);
+    setUpdateId(e.target.id);
     setUpdateForm(prop.note);
   };
   let context = useContext(Context);
