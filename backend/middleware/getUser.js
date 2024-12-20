@@ -2,7 +2,7 @@
 import JWT from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET; // * defined secret for jsonwebtoken
 function getUser(req, res, next) {
-  let token = req.header("auth-token");
+  let token = req.header("auth-token") || req.cookies["auth-token"];
   if (!token) {
     // * in case when token is not present
     res
