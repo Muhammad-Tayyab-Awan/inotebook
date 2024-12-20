@@ -8,6 +8,7 @@ const { body, validationResult } = expressValidator;
 import JWT from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET; // * defined secret for jsonwebtoken
 import getUser from "../middleware/getUser.js"; // * imported getUser Middleware
+import transporter from "../mailTransporter.js";
 // * route for registering a new user
 router.post(
   "/signup",
@@ -88,10 +89,35 @@ router.post(
         } else {
           // * in case when user exist in Database
           const comparePassword = await bcrypt.compare(password, user.password); // * comparing password of the user with the email taken from the request.body present in the database with the password provided in request.body
-          if (comparePassword) {
+          if (comparePassword && user.emailVerified === true) {
             // * in case when password compared successfully
             let token = JWT.sign({ id: user.id }, JWT_SECRET); // * generating token using user id
             res.status(200).json({ success: true, authToken: token }); // * sending response with auth-token
+          } else if (comparePassword && user.emailVerified !== true) {
+            // * in case when password compared successfully but email is not verified
+            let verificationToken = JWT.sign({ id: user.id }, JWT_SECRET);
+            transporter.sendMail(
+              {
+                from: process.env.EMAIL,
+                to: user.email,
+                subject: "Email Verification",
+                html: `<h1>Click on the link to verify your email <a href="${process.env.API_URL}/verify/${verificationToken}">Verify Email</a></h1>`
+              },
+              (error) => {
+                if (error) {
+                  res.status(500).json({
+                    success: false,
+                    error: "Error Occurred on Server Side",
+                    message: error.message
+                  });
+                } else {
+                  res.status(400).json({
+                    success: false,
+                    error: `We have sent verification email to ${user.email},Check your mailbox`
+                  });
+                }
+              }
+            );
           } else {
             // * in case when password not compared successfully
             res.status(400).json({
@@ -156,9 +182,10 @@ router.put(
             password: user.password
           }; // * destructuring req.body and creating new data of the user
           await Users.findByIdAndUpdate(userId, updatedUser); // * updating the user information
-          res
-            .status(200)
-            .json({ success: true, message: "User Data Updated Successfully!" }); // * sending response
+          res.status(200).json({
+            success: true,
+            message: "User Data Updated Successfully!"
+          }); // * sending response
         } else if (userByEmail) {
           // * in case when other user with the email found in request.body already exists
           res.status(400).json({
@@ -174,9 +201,10 @@ router.put(
             password: user.password
           }; // * destructuring req.body and creating new data of the user
           await Users.findByIdAndUpdate(userId, updatedUser); // * updating the user information
-          res
-            .status(200)
-            .json({ success: true, message: "User Data Updated Successfully!" }); // * sending response
+          res.status(200).json({
+            success: true,
+            message: "User Data Updated Successfully!"
+          }); // * sending response
         }
       } else {
         // * in case when request is not validated successfully
