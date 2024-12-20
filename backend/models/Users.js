@@ -13,6 +13,7 @@ const usersSchema = Schema({
     required: true,
     unique: true
   },
+  emailVerified: { type: Boolean, default: false },
   password: {
     // * password is also required
     type: String,
