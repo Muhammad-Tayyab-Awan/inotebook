@@ -6,6 +6,7 @@ const port = 8080; // * defined port for server
 import dbConnection from "./dbConnection.js"; // * imported dbConnection function
 import authRoute from "./routes/auth.js"; // * imported auth routes
 import notesRoute from "./routes/notes.js"; // * imported notes routes
+import verifyRoute from "./routes/verify.js"; // * imported verify routes
 const connectionToDB = await dbConnection(); // * calling dbConnection for Database Connection
 if (connectionToDB.success) {
   // * in case when connection to Database established
@@ -24,6 +25,7 @@ app.use(express.json()); // * using json parsing to parse req.body for further m
 
 app.use("/api/auth", authRoute); // * using auth route
 app.use("/api/notes", notesRoute); // * using notes route
+app.use("/api/verify", verifyRoute); // * using verify route
 
 app.get("/", (req, res) => {
   // * Welcome route of server api
