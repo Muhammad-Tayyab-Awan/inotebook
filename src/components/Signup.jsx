@@ -39,8 +39,7 @@ function Signup(props) {
       let response = await signUp(signupCredentials);
       if (response.success) {
         props.notify.success("Registered successfully!");
-        props.notify.success("Logged in successfully!");
-        navigate("/");
+        navigate("/login");
       } else {
         if (Array.isArray(response.errors)) {
           response.errors.map((err) => {

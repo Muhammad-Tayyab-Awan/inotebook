@@ -15,7 +15,8 @@ import Context from "./context/Context.jsx";
 import Note from "./components/note/Note.jsx";
 import UpdateUser from "./components/UpdateUser.jsx";
 import NotFound from "./components/NotFound.jsx";
-const URL = "https://inotebook-psi.vercel.app/api/";
+// const URL = "https://inotebook-psi.vercel.app/api/";
+const URL = "http://localhost:8080/api/";
 function App() {
   const [filter, setFilter] = useState("All");
   const [progress, setProgress] = useState(10);
@@ -142,10 +143,6 @@ function App() {
       body: JSON.stringify({ ...credentials })
     });
     let JsonResponse = await response.json();
-    if (JsonResponse.success) {
-      localStorage.setItem("auth-token", JsonResponse.authToken);
-      setIsLoggedIN(JsonResponse.authToken);
-    }
     return JsonResponse;
   }
   async function getUserData() {
