@@ -9,6 +9,7 @@
 ### Features
 
 - **User Registration**: Create a personal account to manage your notes.
+- **Verify Your Email**: Verify your email during first login.
 - **Note Management**: Add, edit, and delete notes. Each note includes:
   - A title
   - A description
