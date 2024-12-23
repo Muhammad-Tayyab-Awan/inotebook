@@ -15,8 +15,7 @@ import Context from "./context/Context.jsx";
 import Note from "./components/note/Note.jsx";
 import UpdateUser from "./components/UpdateUser.jsx";
 import NotFound from "./components/NotFound.jsx";
-// const URL = "https://inotebook-psi.vercel.app/api/";
-const URL = "http://localhost:8080/api/";
+const URL = import.meta.env.VITE_API_URL;
 function App() {
   const [filter, setFilter] = useState("All");
   const [progress, setProgress] = useState(10);
