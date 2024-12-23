@@ -44,6 +44,7 @@
 |  `/api/auth/login`  |                 Log in an existing user                  |  POST  |
 | `/api/auth/getuser` |     Retrieve specific user data (excluding password)     |  POST  |
 | `/api/auth/update`  | Update specific user data (excluding password, id, date) |  PUT   |
+| `/api/verify/:verificationToken` | Verify your email through the link sent to your email | GET |
 
 ### Notes Routes
 
