@@ -9,28 +9,28 @@ const Footer = () => {
     {
       name: "GitHub",
       icon: githubIcon,
-      link: "https://github.com/Muhammad-Tayyab-Awan"
+      link: "https://github.com/Muhammad-Tayyab-Awan",
     },
     {
       name: "Facebook",
       icon: facebookIcon,
-      link: "https://www.facebook.com/infowithawan1918"
+      link: "https://www.facebook.com/infowithawan",
     },
     {
       name: "Twitter",
       icon: twitterIcon,
-      link: "https://x.com/m_tayyabrAwan26"
+      link: "https://x.com/m_tayyabrAwan26",
     },
     {
       name: "LinkedIn",
       icon: linkedinIcon,
-      link: "https://www.linkedin.com/in/muhammad-tayyab-awan/"
+      link: "https://www.linkedin.com/in/muhammad-tayyab-awan/",
     },
     {
       name: "Instagram",
       icon: instagramIcon,
-      link: "https://www.instagram.com/infowithawan1918"
-    }
+      link: "https://www.instagram.com/infowithawan",
+    },
   ];
   let date = new Date();
   let year = date.getFullYear();
