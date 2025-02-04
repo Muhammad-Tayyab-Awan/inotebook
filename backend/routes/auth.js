@@ -197,6 +197,7 @@ router.put(
           const updatedUser = {
             _id: user._id,
             ...req.body,
+            emailVerified: false,
             date: user.date,
             password: user.password
           }; // * destructuring req.body and creating new data of the user
