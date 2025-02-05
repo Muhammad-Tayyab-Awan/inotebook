@@ -15,6 +15,7 @@ import Context from "./context/Context.jsx";
 import Note from "./components/note/Note.jsx";
 import UpdateUser from "./components/UpdateUser.jsx";
 import NotFound from "./components/NotFound.jsx";
+import Verify from "./components/Verify.jsx";
 const URL = import.meta.env.VITE_API_URL;
 function App() {
   const [filter, setFilter] = useState("All");
@@ -243,6 +244,10 @@ function App() {
             <Route
               path="note/:id"
               element={<Note setProgress={setProgress} notify={toast} />}
+            />
+            <Route
+              path="verify/:token"
+              element={<Verify setProgress={setProgress} />}
             />
             <Route path="*" element={<NotFound notify={toast} />} />
           </Routes>
