@@ -10,3 +10,22 @@
 * {
   scrollbar-width: none;
 }
+.loading-animation {
+  animation: loader 1.4s infinite ease-in-out;
+}
+.loading-animation:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.loading-animation:nth-child(2) {
+  animation-delay: -0.16s;
+}
+@keyframes loader {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
