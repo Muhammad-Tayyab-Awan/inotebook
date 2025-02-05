@@ -4,38 +4,47 @@ import twitterIcon from "../assets/twitter.svg";
 import linkedinIcon from "../assets/linkedin.svg";
 import githubIcon from "../assets/github.svg";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 const Footer = () => {
   const socialMedia = [
     {
       name: "GitHub",
       icon: githubIcon,
-      link: "https://github.com/Muhammad-Tayyab-Awan",
+      link: "https://github.com/Muhammad-Tayyab-Awan"
     },
     {
       name: "Facebook",
       icon: facebookIcon,
-      link: "https://www.facebook.com/infowithawan",
+      link: "https://www.facebook.com/infowithawan"
     },
     {
       name: "Twitter",
       icon: twitterIcon,
-      link: "https://x.com/m_tayyabrAwan26",
+      link: "https://x.com/m_tayyabrAwan26"
     },
     {
       name: "LinkedIn",
       icon: linkedinIcon,
-      link: "https://www.linkedin.com/in/muhammad-tayyab-awan/",
+      link: "https://www.linkedin.com/in/muhammad-tayyab-awan/"
     },
     {
       name: "Instagram",
       icon: instagramIcon,
-      link: "https://www.instagram.com/infowithawan",
-    },
+      link: "https://www.instagram.com/infowithawan"
+    }
   ];
   let date = new Date();
   let year = date.getFullYear();
+  const [display, setDisplay] = useState(true);
+  useEffect(() => {
+    window.location.pathname.startsWith("/verify") && setDisplay(false);
+  }, []);
   return (
-    <footer className="bg-gray-100 selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 py-6 relative bottom-0 w-full">
+    <footer
+      className={`bg-gray-100 selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 py-6 relative bottom-0 w-full ${
+        !display && "hidden"
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
