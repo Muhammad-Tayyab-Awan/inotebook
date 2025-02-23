@@ -8,7 +8,7 @@ function UpdateUser(prop) {
   let { getUserData, updateUser } = context;
   const [updateCredentials, setUpdateCredentials] = useState({
     name: "",
-    email: ""
+    email: "",
   });
   let navigate = useNavigate();
   useEffect(() => {
@@ -19,7 +19,7 @@ function UpdateUser(prop) {
         if (response.success) {
           setUpdateCredentials({
             name: response.user.name,
-            email: response.user.email
+            email: response.user.email,
           });
           prop.setProgress(100);
         } else {
@@ -35,7 +35,7 @@ function UpdateUser(prop) {
   function changehandle(e) {
     setUpdateCredentials({
       ...updateCredentials,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
   async function updateHandler(e) {
@@ -47,7 +47,7 @@ function UpdateUser(prop) {
       if (response2.success) {
         setUpdateCredentials({
           name: response2.user.name,
-          email: response2.user.email
+          email: response2.user.email,
         });
       } else {
         navigate("/login");
@@ -64,19 +64,19 @@ function UpdateUser(prop) {
     }
   }
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 dark:bg-[#776e6e] selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
-      <div className="w-[95%] sm:w-[85%] md:w-9/12 lg:w-3/5 mx-auto p-4">
-        <h1 className="text-xl font-semibold text-black dark:text-white text-center mb-4">
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pb-10 pt-16 selection:bg-[#111827] selection:text-white dark:bg-[#776e6e] dark:selection:bg-yellow-500 dark:selection:text-black">
+      <div className="mx-auto w-[95%] p-4 sm:w-[85%] md:w-9/12 lg:w-3/5">
+        <h1 className="mb-4 text-center text-xl font-semibold text-black dark:text-white">
           Update Your Profile
         </h1>
         <form
           onSubmit={updateHandler}
-          className="bg-white w-full dark:bg-[#111827] mx-auto h-56 md:h-64 sm:w-full md:w-full lg:w-full md:px-4 rounded-lg py-2 md:py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
+          className="mx-auto flex h-56 w-full flex-col items-center justify-around rounded-lg bg-white py-2 text-neutral-600 dark:bg-[#111827] dark:text-white sm:w-full md:h-64 md:w-full md:px-4 md:py-8 lg:w-full"
         >
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="name"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Name
             </label>
@@ -89,13 +89,13 @@ function UpdateUser(prop) {
               minLength={8}
               onChange={changehandle}
               value={updateCredentials.name}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
             />
           </div>
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="email"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Email
             </label>
@@ -108,10 +108,10 @@ function UpdateUser(prop) {
               autoComplete="username"
               onChange={changehandle}
               value={updateCredentials.email}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
             />
           </div>
-          <button className="bg-[#111827] dark:bg-white dark:text-[#111827] py-1 px-3 text-white rounded-lg focus-visible:outline-none">
+          <button className="rounded-lg bg-[#111827] px-3 py-1 text-white focus-visible:outline-none dark:bg-white dark:text-[#111827]">
             Update
           </button>
         </form>

@@ -10,7 +10,7 @@ function Noteitem(prop) {
   const [updatingNote, setUpdateForm] = useState({
     title: "",
     description: "",
-    tag: ""
+    tag: "",
   });
   function handleChange(e) {
     setUpdateForm({ ...updatingNote, [e.target.name]: e.target.value });
@@ -54,8 +54,8 @@ function Noteitem(prop) {
     <>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white dark:bg-[#111827] rounded-lg shadow-lg w-[95%] sm:w-[70%] border-2 border-[#111827] dark:border-white text-[#111827] dark:text-white">
-            <div className="px-4 py-2 border-b border-gray-200 flex justify-between items-center">
+          <div className="w-[95%] rounded-lg border-2 border-[#111827] bg-white text-[#111827] shadow-lg dark:border-white dark:bg-[#111827] dark:text-white sm:w-[70%]">
+            <div className="flex items-center justify-between border-b border-gray-200 px-4 py-2">
               <h1 className="text-lg font-semibold">Edit Note</h1>
               <button
                 className="text-2xl text-gray-500 hover:text-gray-900 dark:text-white dark:hover:text-gray-200"
@@ -66,11 +66,11 @@ function Noteitem(prop) {
               </button>
             </div>
             <div>
-              <from className="py-4 flex flex-col justify-center items-center gap-5 w-full bg-yellow-500 dark:bg-[#776e6e]">
-                <div className="flex flex-col md:flex-row gap-2 items-center justify-between w-[90%]">
+              <from className="flex w-full flex-col items-center justify-center gap-5 bg-yellow-500 py-4 dark:bg-[#776e6e]">
+                <div className="flex w-[90%] flex-col items-center justify-between gap-2 md:flex-row">
                   <label
                     htmlFor="uptitle"
-                    className="text-md md:text-lg font-semibold"
+                    className="text-md font-semibold md:text-lg"
                   >
                     Title
                   </label>
@@ -82,14 +82,14 @@ function Noteitem(prop) {
                     placeholder="Enter Title"
                     minLength={10}
                     required
-                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full md:w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                    className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
                     onChange={handleChange}
                   />
                 </div>
-                <div className="flex flex-col md:flex-row gap-2 items-center justify-between w-[90%]">
+                <div className="flex w-[90%] flex-col items-center justify-between gap-2 md:flex-row">
                   <label
                     htmlFor="updescription"
-                    className="text-md md:text-lg font-semibold"
+                    className="text-md font-semibold md:text-lg"
                   >
                     Description
                   </label>
@@ -100,14 +100,14 @@ function Noteitem(prop) {
                     required
                     minLength={25}
                     value={updatingNote.description}
-                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full md:w-9/12 min-h-40 max-h-72 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                    className="max-h-72 min-h-40 w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
                     onChange={handleChange}
                   ></textarea>
                 </div>
-                <div className="flex flex-col md:flex-row gap-2 items-center justify-between w-[90%]">
+                <div className="flex w-[90%] flex-col items-center justify-between gap-2 md:flex-row">
                   <label
                     htmlFor="uptag"
-                    className="text-md md:text-lg font-semibold"
+                    className="text-md font-semibold md:text-lg"
                   >
                     Tag
                   </label>
@@ -117,13 +117,13 @@ function Noteitem(prop) {
                     name="tag"
                     value={updatingNote.tag}
                     placeholder="Enter Tag"
-                    className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full md:w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                    className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
                     onChange={handleChange}
                   />
                 </div>
               </from>
             </div>
-            <div className="px-4 py-2 border-t border-gray-200 flex justify-end space-x-2">
+            <div className="flex justify-end space-x-2 border-t border-gray-200 px-4 py-2">
               <button
                 disabled={
                   updatingNote.title.length < 10 ||
@@ -131,7 +131,7 @@ function Noteitem(prop) {
                     ? true
                     : false
                 }
-                className="bg-[#111827] dark:bg-white dark:hover:bg-gray-300 text-white dark:text-[#111827] font-semibold px-2 py-1 rounded-lg hover:bg-[#111837] disabled:opacity-50"
+                className="rounded-lg bg-[#111827] px-2 py-1 font-semibold text-white hover:bg-[#111837] disabled:opacity-50 dark:bg-white dark:text-[#111827] dark:hover:bg-gray-300"
                 onClick={handleUpdate}
                 id={updateId}
               >
@@ -141,21 +141,21 @@ function Noteitem(prop) {
           </div>
         </div>
       )}
-      <div className="dark:bg-[#111827] bg-white dark:text-white text-[#111827] flex flex-col rounded-lg border border-[#111827] justify-between w-full sm:w-[45%] md:w-[45%] lg:w-[45%] xl:w-[30%] h-56 overflow-y-auto overflow-x-hidden">
+      <div className="flex h-56 w-full flex-col justify-between overflow-y-auto overflow-x-hidden rounded-lg border border-[#111827] bg-white text-[#111827] dark:bg-[#111827] dark:text-white sm:w-[45%] md:w-[45%] lg:w-[45%] xl:w-[30%]">
         <Link
           to={`/note/${prop.note._id}`}
-          className="dark:bg-white bg-[#111827] text-white dark:text-[#111827] text-lg font-semibold justify-center items-center p-2 sticky top-0"
+          className="sticky top-0 items-center justify-center bg-[#111827] p-2 text-lg font-semibold text-white dark:bg-white dark:text-[#111827]"
         >
           {prop.note.title}
         </Link>
         <p className="p-2 text-justify text-sm">{prop.note.description}</p>
-        <div className="w-auto p-1 flex justify-start items-center gap-2">
-          <span className="bg-[#111827] dark:bg-white text-white dark:text-[#111827] font-semibold py-1 px-2 text-center rounded-md inline-block">
+        <div className="flex w-auto items-center justify-start gap-2 p-1">
+          <span className="inline-block rounded-md bg-[#111827] px-2 py-1 text-center font-semibold text-white dark:bg-white dark:text-[#111827]">
             Tag:
           </span>
           <span className="font-bold">{prop.note.tag}</span>
         </div>
-        <div className="flex gap-2 self-end sticky bottom-0 z-[0] p-2 w-auto bg-[#111827] dark:bg-white rounded-tl-lg">
+        <div className="sticky bottom-0 z-[0] flex w-auto gap-2 self-end rounded-tl-lg bg-[#111827] p-2 dark:bg-white">
           <img
             src={deleteIcon}
             alt="delete"

@@ -8,7 +8,7 @@ function Home(props) {
     props.setProgress(40);
   }, []);
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] dark:bg-[#776e6e] bg-yellow-500 selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pb-10 pt-16 selection:bg-[#111827] selection:text-white dark:bg-[#776e6e] dark:selection:bg-yellow-500 dark:selection:text-black">
       <Notes notify={props.notify} setProgress={props.setProgress} />
     </div>
   );

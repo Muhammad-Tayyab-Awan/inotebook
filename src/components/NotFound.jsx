@@ -8,18 +8,18 @@ const NotFound = (prop) => {
     prop.notify.error("Oops! Page Not Found");
   }, []);
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white bg-blue-200 flex flex-col items-center justify-center p-4">
+    <div className="flex min-h-[calc(100vh-9.5rem)] flex-col items-center justify-center bg-blue-200 p-4 selection:bg-[#111827] selection:text-white dark:selection:bg-yellow-500 dark:selection:text-black">
       <h1 className="text-6xl font-bold text-red-800">404</h1>
-      <h2 className="text-2xl md:text-3xl font-semibold text-red-600 mt-4">
+      <h2 className="mt-4 text-2xl font-semibold text-red-600 md:text-3xl">
         Oops! Page Not Found
       </h2>
-      <p className="text-red-500 mt-2 text-center font-semibold">
+      <p className="mt-2 text-center font-semibold text-red-500">
         The page you are looking for might have been removed or is temporarily
         unavailable.
       </p>
       <Link
         to="/"
-        className="mt-6 px-3 py-1 bg-red-500 text-white rounded-lg shadow-lg hover:bg-red-600 transition duration-300 ease-in-out"
+        className="mt-6 rounded-lg bg-red-500 px-3 py-1 text-white shadow-lg transition duration-300 ease-in-out hover:bg-red-600"
       >
         Go Back Home
       </Link>

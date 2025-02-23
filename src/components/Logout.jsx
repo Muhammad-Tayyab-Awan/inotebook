@@ -25,33 +25,33 @@ function Logout(props) {
     navigate("/login");
   };
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 dark:bg-[#776e6e] selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pb-10 pt-16 selection:bg-[#111827] selection:text-white dark:bg-[#776e6e] dark:selection:bg-yellow-500 dark:selection:text-black">
       <div className="py-2">
-        <div className="flex w-[75%] mx-auto flex-wrap h-auto justify-center items-center">
-          <div className="flex justify-center items-center">
+        <div className="mx-auto flex h-auto w-[75%] flex-wrap items-center justify-center">
+          <div className="flex items-center justify-center">
             <img src={logoutIcon} alt="logout" />
           </div>
-          <div className="flex flex-col justify-center gap-8 items-center">
+          <div className="flex flex-col items-center justify-center gap-8">
             <p className="text-2xl font-bold text-[#111827] dark:text-white">
               Thank you for visiting! We hope to see you again soon.
             </p>
             <button
-              className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-xl focus-visible:outline-none"
+              className="rounded-xl bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-500 focus-visible:outline-none"
               onClick={handleShow}
             >
               Logout
             </button>
             {show && (
               <div
-                className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
                 role="dialog"
                 aria-modal="true"
               >
-                <div className="bg-white dark:bg-[#111827] dark:text-white max-w-lg mx-auto p-6 rounded-lg shadow-lg w-[90vw]">
-                  <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-3">
+                <div className="mx-auto w-[90vw] max-w-lg rounded-lg bg-white p-6 shadow-lg dark:bg-[#111827] dark:text-white">
+                  <div className="flex items-center justify-between border-b border-gray-200 pb-3 dark:border-gray-700">
                     <h5 className="text-lg font-semibold">Confirm Logout</h5>
                     <button
-                      className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-3xl"
+                      className="text-3xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                       aria-label="Close"
                       onClick={handleClose}
                     >
@@ -63,13 +63,13 @@ function Logout(props) {
                   </div>
                   <div className="flex justify-end space-x-2">
                     <button
-                      className="bg-[#111827] hover:bg-[#444b5a] dark:bg-white dark:hover:bg-slate-400 dark:text-[#111827] text-white font-bold py-2 px-4 rounded-xl"
+                      className="rounded-xl bg-[#111827] px-4 py-2 font-bold text-white hover:bg-[#444b5a] dark:bg-white dark:text-[#111827] dark:hover:bg-slate-400"
                       onClick={handleClose}
                     >
                       Cancel
                     </button>
                     <button
-                      className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-xl"
+                      className="rounded-xl bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-500"
                       onClick={() => {
                         handleClose();
                         logoutHandler();

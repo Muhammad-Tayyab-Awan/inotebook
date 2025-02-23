@@ -37,20 +37,20 @@ function Notes(props) {
   });
   return (
     <>
-      <div className="w-[95%] sm:w-[85%] md:w-9/12 lg:w-3/5 mx-auto p-4">
+      <div className="mx-auto w-[95%] p-4 sm:w-[85%] md:w-9/12 lg:w-3/5">
         {notesAddedToday.length < dailyLimit ? (
           <Newnote notify={props.notify} />
         ) : (
-          <div className="text-2xl flex justify-center items-center py-8 text-red-700 font-bold dark:text-red-900">
+          <div className="flex items-center justify-center py-8 text-2xl font-bold text-red-700 dark:text-red-900">
             You have exceeded daily limit of adding notes
           </div>
         )}
       </div>
-      <div className="w-[95%] sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[85%] mx-auto p-4">
-        <h2 className="my-2 text-2xl font-bold text-center text-black dark:text-white">
+      <div className="mx-auto w-[95%] p-4 sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[85%]">
+        <h2 className="my-2 text-center text-2xl font-bold text-black dark:text-white">
           All Notes
         </h2>
-        <div className="my-4 w-3/4 md:w-1/2 mx-auto flex flex-col md:flex-row justify-evenly items-center">
+        <div className="mx-auto my-4 flex w-3/4 flex-col items-center justify-evenly md:w-1/2 md:flex-row">
           {Notes.length > 0 && (
             <Filter
               Notes={Notes}
@@ -64,7 +64,7 @@ function Notes(props) {
             />
           )}
         </div>
-        <div className="my-4 flex flex-wrap justify-center items-baseline gap-3">
+        <div className="my-4 flex flex-wrap items-baseline justify-center gap-3">
           {Notes.length > 0 ? (
             filter === "All" ? (
               Notes.map((note) => {
@@ -82,7 +82,7 @@ function Notes(props) {
               })
             )
           ) : (
-            <div className="text-2xl flex justify-center items-center py-8 text-red-700 font-bold dark:text-red-900">
+            <div className="flex items-center justify-center py-8 text-2xl font-bold text-red-700 dark:text-red-900">
               No Notes Found
             </div>
           )}

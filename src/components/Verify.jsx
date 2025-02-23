@@ -35,10 +35,10 @@ function Verify(prop) {
       });
   }, [param.token]);
   return (
-    <div className="h-screen w-full bg-yellow-200 flex justify-center items-start">
+    <div className="flex h-screen w-full items-start justify-center bg-yellow-200">
       {verifying ? (
-        <div className="flex flex-col justify-center items-center gap-3 my-6">
-          <h1 className="text-2xl text-center">Verifying....</h1>
+        <div className="my-6 flex flex-col items-center justify-center gap-3">
+          <h1 className="text-center text-2xl">Verifying....</h1>
           <div className="text-3xl font-extrabold">
             <span className="loading-animation">.</span>
             <span className="loading-animation">.</span>
@@ -46,11 +46,11 @@ function Verify(prop) {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col justify-center items-center gap-3 my-6">
+        <div className="my-6 flex flex-col items-center justify-center gap-3">
           <h1
             className={`${
               verification ? "text-lime-600" : "text-red-600"
-            } text-2xl text-center`}
+            } text-center text-2xl`}
           >
             {verification
               ? "Email Verified Successfully"

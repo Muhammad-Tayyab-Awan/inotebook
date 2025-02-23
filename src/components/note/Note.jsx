@@ -9,7 +9,7 @@ function Note(prop) {
     title: "",
     description: "",
     tag: "",
-    date: ""
+    date: "",
   });
   let [found, setFound] = useState(false);
   let [notesList, setNotesList] = useState([]);
@@ -40,7 +40,7 @@ function Note(prop) {
             title: notes[foundIndex].title,
             description: notes[foundIndex].description,
             tag: notes[foundIndex].tag,
-            date: date.toLocaleString()
+            date: date.toLocaleString(),
           });
         } else {
           document.title = `iNotebook - No note found!`;
@@ -64,16 +64,16 @@ function Note(prop) {
     }
   };
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] dark:bg-[#776e6e] bg-yellow-500 selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pb-10 pt-16 selection:bg-[#111827] selection:text-white dark:bg-[#776e6e] dark:selection:bg-yellow-500 dark:selection:text-black">
       {found ? (
-        <div className="mx-auto bg-white border border-black dark:border-white dark:bg-[#111827] text-[#111827] dark:text-white min-h-[60vh] md:min-h-[70vh] w-[95%] md:w-3/4 lg:w-3/5 py-6 my-4 rounded-lg shadow-2xl shadow-black relative">
-          <h2 className="text-xl w-[90%] md:w-[80%] md:text-2xl font-semibold text-center py-4 mx-auto">
+        <div className="relative mx-auto my-4 min-h-[60vh] w-[95%] rounded-lg border border-black bg-white py-6 text-[#111827] shadow-2xl shadow-black dark:border-white dark:bg-[#111827] dark:text-white md:min-h-[70vh] md:w-3/4 lg:w-3/5">
+          <h2 className="mx-auto w-[90%] py-4 text-center text-xl font-semibold md:w-[80%] md:text-2xl">
             {currNote.title}
           </h2>
-          <p className="text-lg w-[90%] md:w-[80%] mx-auto py-4 text-justify">
+          <p className="mx-auto w-[90%] py-4 text-justify text-lg md:w-[80%]">
             {currNote.description}
           </p>
-          <div className="flex flex-col justify-center items-start justify md:flex-row md:justify-around md:items-center w-[90%] md:w-[80%] mx-auto py-2 gap-4 md:absolute bottom-4 right-[10%]">
+          <div className="justify bottom-4 right-[10%] mx-auto flex w-[90%] flex-col items-start justify-center gap-4 py-2 md:absolute md:w-[80%] md:flex-row md:items-center md:justify-around">
             <p>
               Tag:&nbsp;
               <span className="font-bold text-blue-700 dark:text-yellow-500">
@@ -89,24 +89,24 @@ function Note(prop) {
           </div>
           <button
             onClick={handlePrevNote}
-            className={`focus-visible:outline-none px-3 py-1 font-bold absolute bottom-2 left-2 bg-[#111827] dark:bg-white text-white dark:text-[#111827] rounded-lg ${
-              currentIndex === 0 && "opacity-50 cursor-not-allowed"
+            className={`absolute bottom-2 left-2 rounded-lg bg-[#111827] px-3 py-1 font-bold text-white focus-visible:outline-none dark:bg-white dark:text-[#111827] ${
+              currentIndex === 0 && "cursor-not-allowed opacity-50"
             }`}
           >
             Prev
           </button>
           <button
             onClick={handleNextNote}
-            className={`focus-visible:outline-none px-3 py-1 font-bold absolute bottom-2 right-2 bg-[#111827] dark:bg-white text-white dark:text-[#111827] rounded-lg ${
+            className={`absolute bottom-2 right-2 rounded-lg bg-[#111827] px-3 py-1 font-bold text-white focus-visible:outline-none dark:bg-white dark:text-[#111827] ${
               currentIndex === notesList.length - 1 &&
-              "opacity-50 cursor-not-allowed"
+              "cursor-not-allowed opacity-50"
             }`}
           >
             Next
           </button>
         </div>
       ) : (
-        <div className="text-2xl flex justify-center items-center py-8 text-red-700 font-bold dark:text-red-900">
+        <div className="flex items-center justify-center py-8 text-2xl font-bold text-red-700 dark:text-red-900">
           No note found
         </div>
       )}

@@ -9,7 +9,7 @@ function Signup(props) {
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
       props.notify.error(
-        "In order to register another account you must have to logout from the current account!"
+        "In order to register another account you must have to logout from the current account!",
       );
       navigate("/logout");
     }
@@ -24,13 +24,13 @@ function Signup(props) {
   const [signupCredentials, setSignupCredentials] = useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
   });
   const [cPassword, setCPassword] = useState("");
   function changehandle(e) {
     setSignupCredentials({
       ...signupCredentials,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
   async function handleSubmit(e) {
@@ -54,19 +54,19 @@ function Signup(props) {
     }
   }
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 dark:bg-[#776e6e] selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
-      <div className="w-[95%] sm:w-[85%] md:w-9/12 lg:w-3/5 mx-auto p-4">
-        <h1 className="text-xl font-semibold text-black dark:text-white text-center mb-4">
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pb-10 pt-16 selection:bg-[#111827] selection:text-white dark:bg-[#776e6e] dark:selection:bg-yellow-500 dark:selection:text-black">
+      <div className="mx-auto w-[95%] p-4 sm:w-[85%] md:w-9/12 lg:w-3/5">
+        <h1 className="mb-4 text-center text-xl font-semibold text-black dark:text-white">
           Register Now to use Our Services
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="bg-white w-full dark:bg-[#111827] mx-auto h-72 md:h-96 sm:w-full md:w-full lg:w-full md:px-4 rounded-lg py-2 md:py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
+          className="mx-auto flex h-72 w-full flex-col items-center justify-around rounded-lg bg-white py-2 text-neutral-600 dark:bg-[#111827] dark:text-white sm:w-full md:h-96 md:w-full md:px-4 md:py-8 lg:w-full"
         >
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="name"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Name
             </label>
@@ -79,13 +79,13 @@ function Signup(props) {
               minLength={8}
               onChange={changehandle}
               value={signupCredentials.name}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
             />
           </div>
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="email"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Email
             </label>
@@ -98,17 +98,17 @@ function Signup(props) {
               autoComplete="username"
               onChange={changehandle}
               value={signupCredentials.email}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
             />
           </div>
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="password"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Password
             </label>
-            <div className="flex w-9/12 relative">
+            <div className="relative flex w-9/12">
               <input
                 type={passShow ? "text" : "password"}
                 id="password"
@@ -119,7 +119,7 @@ function Signup(props) {
                 autoComplete="new-password"
                 onChange={changehandle}
                 value={signupCredentials.password}
-                className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
               />
               <img
                 onClick={() => {
@@ -127,18 +127,18 @@ function Signup(props) {
                 }}
                 src={passShow ? eyeCrossIcon : eyeIcon}
                 alt="Show Password"
-                className="h-5 w-5 md:h-6 md:w-6 absolute top-[.41rem] right-[.45rem] md:top-[.25rem] md:right-[.5rem]"
+                className="absolute right-[.45rem] top-[.41rem] h-5 w-5 md:right-[.5rem] md:top-[.25rem] md:h-6 md:w-6"
               />
             </div>
           </div>
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="cpassword"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Confirm Password
             </label>
-            <div className="flex w-9/12 relative">
+            <div className="relative flex w-9/12">
               <input
                 type={cPassShow ? "text" : "password"}
                 id="cpassword"
@@ -149,7 +149,7 @@ function Signup(props) {
                 autoComplete="new-password"
                 value={cPassword}
                 onChange={(e) => setCPassword(e.target.value)}
-                className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
               />
               <img
                 onClick={() => {
@@ -157,11 +157,11 @@ function Signup(props) {
                 }}
                 src={cPassShow ? eyeCrossIcon : eyeIcon}
                 alt="Show Password"
-                className="h-5 w-5 md:h-6 md:w-6 absolute top-[.41rem] right-[.45rem] md:top-[.25rem] md:right-[.5rem]"
+                className="absolute right-[.45rem] top-[.41rem] h-5 w-5 md:right-[.5rem] md:top-[.25rem] md:h-6 md:w-6"
               />
             </div>
           </div>
-          <button className="bg-[#111827] dark:bg-white dark:text-[#111827] py-1 px-3 text-white rounded-lg">
+          <button className="rounded-lg bg-[#111827] px-3 py-1 text-white dark:bg-white dark:text-[#111827]">
             Signup
           </button>
         </form>

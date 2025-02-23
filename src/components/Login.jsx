@@ -20,12 +20,12 @@ function Login(props) {
   let { loginUser } = context;
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   function changehandle(e) {
     setLoginCredentials({
       ...loginCredentials,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
   async function handleSubmit(e) {
@@ -45,19 +45,19 @@ function Login(props) {
     }
   }
   return (
-    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 dark:bg-[#776e6e] selection:bg-[#111827] dark:selection:bg-yellow-500 dark:selection:text-black selection:text-white pt-16 pb-10">
-      <div className="w-[95%] sm:w-[85%] md:w-9/12 lg:w-3/5 mx-auto p-4">
-        <h1 className="text-xl font-semibold text-center text-black dark:text-white mb-4">
+    <div className="min-h-[calc(100vh-9.5rem)] bg-yellow-500 pb-10 pt-16 selection:bg-[#111827] selection:text-white dark:bg-[#776e6e] dark:selection:bg-yellow-500 dark:selection:text-black">
+      <div className="mx-auto w-[95%] p-4 sm:w-[85%] md:w-9/12 lg:w-3/5">
+        <h1 className="mb-4 text-center text-xl font-semibold text-black dark:text-white">
           Login Now to use Our Services
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="bg-white w-full dark:bg-[#111827] mx-auto h-60 md:h-72 sm:w-full md:w-full lg:w-full md:px-4 rounded-lg py-2 md:py-8 flex flex-col items-center justify-around dark:text-white text-neutral-600"
+          className="mx-auto flex h-60 w-full flex-col items-center justify-around rounded-lg bg-white py-2 text-neutral-600 dark:bg-[#111827] dark:text-white sm:w-full md:h-72 md:w-full md:px-4 md:py-8 lg:w-full"
         >
-          <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
+          <div className="flex w-[95%] items-center justify-between gap-2 sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="email"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Email
             </label>
@@ -70,17 +70,17 @@ function Login(props) {
               required
               onChange={changehandle}
               value={loginCredentials.email}
-              className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-9/12 dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
             />
           </div>
-          <div className="flex gap-2 w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
+          <div className="flex w-[95%] items-center justify-between gap-2 sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
             <label
               htmlFor="password"
-              className="text-sm md:text-lg font-semibold w-6 xl:w-auto"
+              className="w-6 text-sm font-semibold md:text-lg xl:w-auto"
             >
               Password
             </label>
-            <div className="w-9/12 flex relative">
+            <div className="relative flex w-9/12">
               <input
                 type={passShow ? "text" : "password"}
                 id="password"
@@ -91,7 +91,7 @@ function Login(props) {
                 required
                 onChange={changehandle}
                 value={loginCredentials.password}
-                className="p-1 rounded-lg focus-visible:outline-none focus-visible:shadow-xl focus-visible:shadow-black w-full dark:text-black dark:bg-slate-50 bg-slate-900 text-white"
+                className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
               />
               <img
                 onClick={() => {
@@ -99,11 +99,11 @@ function Login(props) {
                 }}
                 src={passShow ? eyeCrossIcon : eyeIcon}
                 alt="Show Password"
-                className="h-6 w-6 absolute top-[.25rem] right-[.5rem]"
+                className="absolute right-[.5rem] top-[.25rem] h-6 w-6"
               />
             </div>
           </div>
-          <button className="bg-[#111827] dark:bg-white dark:text-[#111827] py-1 px-3 text-white rounded-lg">
+          <button className="rounded-lg bg-[#111827] px-3 py-1 text-white dark:bg-white dark:text-[#111827]">
             Login
           </button>
         </form>
