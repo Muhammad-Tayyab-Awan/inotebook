@@ -7,15 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "both": "concurrently \"npm run dev\" \"nodemon backend/index.js\""
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Muhammad-Tayyab-Awan/inotebook.git"
   },
   "dependencies": {
-    "concurrently": "^9.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.5.1",
