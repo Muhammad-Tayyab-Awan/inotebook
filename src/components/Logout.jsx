@@ -36,7 +36,7 @@ function Logout(props) {
               Thank you for visiting! We hope to see you again soon.
             </p>
             <button
-              className="rounded-xl bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-500 focus-visible:outline-none"
+              className="rounded-xl bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-500 focus-visible:outline-hidden"
               onClick={handleShow}
             >
               Logout

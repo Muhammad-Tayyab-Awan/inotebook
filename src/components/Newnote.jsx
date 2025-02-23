@@ -44,7 +44,7 @@ function Newnote(props) {
             value={note.title}
             placeholder="Enter Title"
             required
-            className="w-11/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
+            className="w-11/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black md:w-9/12"
             onChange={handleChange}
           />
         </div>
@@ -59,7 +59,7 @@ function Newnote(props) {
             minLength={25}
             required
             value={note.description}
-            className="max-h-32 min-h-32 w-11/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
+            className="max-h-32 min-h-32 w-11/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black md:w-9/12"
             onChange={handleChange}
           ></textarea>
         </div>
@@ -73,7 +73,7 @@ function Newnote(props) {
             name="tag"
             value={note.tag}
             placeholder="Enter Tag"
-            className="w-11/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
+            className="w-11/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black md:w-9/12"
             onChange={handleChange}
           />
         </div>
@@ -83,7 +83,7 @@ function Newnote(props) {
               ? true
               : false
           }
-          className="rounded-lg bg-[#111827] px-4 py-1 text-lg font-semibold text-white focus-visible:outline-none disabled:opacity-50 dark:bg-white dark:text-[#111827]"
+          className="rounded-lg bg-[#111827] px-4 py-1 text-lg font-semibold text-white focus-visible:outline-hidden disabled:opacity-50 dark:bg-white dark:text-[#111827]"
           onClick={handleAdd}
         >
           Add Note

@@ -89,7 +89,7 @@ function Note(prop) {
           </div>
           <button
             onClick={handlePrevNote}
-            className={`absolute bottom-2 left-2 rounded-lg bg-[#111827] px-3 py-1 font-bold text-white focus-visible:outline-none dark:bg-white dark:text-[#111827] ${
+            className={`absolute bottom-2 left-2 rounded-lg bg-[#111827] px-3 py-1 font-bold text-white focus-visible:outline-hidden dark:bg-white dark:text-[#111827] ${
               currentIndex === 0 && "cursor-not-allowed opacity-50"
             }`}
           >
@@ -97,7 +97,7 @@ function Note(prop) {
           </button>
           <button
             onClick={handleNextNote}
-            className={`absolute bottom-2 right-2 rounded-lg bg-[#111827] px-3 py-1 font-bold text-white focus-visible:outline-none dark:bg-white dark:text-[#111827] ${
+            className={`absolute bottom-2 right-2 rounded-lg bg-[#111827] px-3 py-1 font-bold text-white focus-visible:outline-hidden dark:bg-white dark:text-[#111827] ${
               currentIndex === notesList.length - 1 &&
               "cursor-not-allowed opacity-50"
             }`}

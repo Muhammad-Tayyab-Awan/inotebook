@@ -23,7 +23,7 @@ function Filter(prop) {
         onInput={changeHandler}
         name="filter"
         id="filter"
-        className="w-[80%] cursor-pointer rounded-lg bg-[#111827] p-2 font-semibold text-white focus-visible:outline-none dark:bg-white dark:text-[#111827] md:w-[45%]"
+        className="w-[80%] cursor-pointer rounded-lg bg-[#111827] p-2 font-semibold text-white focus-visible:outline-hidden dark:bg-white dark:text-[#111827] md:w-[45%]"
       >
         <option key={"All"} value={"All"} className="font-semibold">
           All

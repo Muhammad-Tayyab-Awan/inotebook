@@ -89,7 +89,7 @@ function UpdateUser(prop) {
               minLength={8}
               onChange={changehandle}
               value={updateCredentials.name}
-              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
+              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black"
             />
           </div>
           <div className="flex w-[95%] items-center justify-between sm:w-[95%] md:w-[85%] lg:w-[85%] xl:w-[75%]">
@@ -108,10 +108,10 @@ function UpdateUser(prop) {
               autoComplete="username"
               onChange={changehandle}
               value={updateCredentials.email}
-              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black"
+              className="w-9/12 rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black"
             />
           </div>
-          <button className="rounded-lg bg-[#111827] px-3 py-1 text-white focus-visible:outline-none dark:bg-white dark:text-[#111827]">
+          <button className="rounded-lg bg-[#111827] px-3 py-1 text-white focus-visible:outline-hidden dark:bg-white dark:text-[#111827]">
             Update
           </button>
         </form>

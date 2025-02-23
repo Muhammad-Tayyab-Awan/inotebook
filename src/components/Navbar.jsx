@@ -67,7 +67,7 @@ const Navbar = (prop) => {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <h1 className="flex items-baseline text-3xl font-bold">
               <span className="dark:text-gray-200">i</span>
               <span className="text-purple-500">Notebook</span>
@@ -120,7 +120,7 @@ const Navbar = (prop) => {
             ) : (
               <button
                 onClick={toggleSideBar}
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:text-gray-950 focus-visible:outline-none dark:text-gray-200 dark:hover:text-gray-50"
+                className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:text-gray-950 focus-visible:outline-hidden dark:text-gray-200 dark:hover:text-gray-50"
               >
                 Account
               </button>
@@ -133,7 +133,7 @@ const Navbar = (prop) => {
               <button
                 title="Close"
                 onClick={toggleSideBar}
-                className="absolute left-1 top-1 rounded-full bg-white transition hover:bg-slate-300 focus-visible:outline-none"
+                className="absolute left-1 top-1 rounded-full bg-white transition hover:bg-slate-300 focus-visible:outline-hidden"
               >
                 <img src={closeIcon} alt="close" className="h-6 w-6" />
               </button>
@@ -153,14 +153,14 @@ const Navbar = (prop) => {
                 <NavLink
                   onClick={toggleSideBar}
                   to="/logout"
-                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-none"
+                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-hidden"
                 >
                   Logout
                 </NavLink>
                 <NavLink
                   onClick={toggleSideBar}
                   to="/updateuser"
-                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-none"
+                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-hidden"
                 >
                   Update User
                 </NavLink>
@@ -168,7 +168,7 @@ const Navbar = (prop) => {
             </div>
             <button
               onClick={toggleTheme}
-              className="rounded-md px-3 py-2 text-gray-800 focus:outline-none dark:text-gray-200"
+              className="rounded-md px-3 py-2 text-gray-800 focus:outline-hidden dark:text-gray-200"
             >
               {darkMode ? (
                 <svg
@@ -203,7 +203,7 @@ const Navbar = (prop) => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-white hover:bg-gray-700 focus:outline-none dark:bg-white dark:text-black dark:hover:bg-slate-200"
+              className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-white hover:bg-gray-700 focus:outline-hidden dark:bg-white dark:text-black dark:hover:bg-slate-200"
             >
               <svg
                 className="h-6 w-6"
@@ -282,7 +282,7 @@ const Navbar = (prop) => {
             ) : (
               <button
                 onClick={toggleSideBar}
-                className="block w-full rounded-md px-3 py-2 text-center text-base font-medium text-gray-800 hover:text-gray-950 focus-visible:outline-none dark:text-gray-200 dark:hover:text-gray-50"
+                className="block w-full rounded-md px-3 py-2 text-center text-base font-medium text-gray-800 hover:text-gray-950 focus-visible:outline-hidden dark:text-gray-200 dark:hover:text-gray-50"
               >
                 Account
               </button>
@@ -290,12 +290,12 @@ const Navbar = (prop) => {
             <div
               className={`absolute bg-orange-500 opacity-90 dark:bg-slate-400 ${
                 sideBar && isLoggedIn ? "right-0" : "-right-full"
-              } top-[0] h-screen rounded-bl-xl rounded-tl-xl p-4 shadow-lg shadow-black`}
+              } top-0 h-screen rounded-bl-xl rounded-tl-xl p-4 shadow-lg shadow-black`}
             >
               <button
                 title="Close"
                 onClick={toggleSideBar}
-                className="absolute left-1 top-1 rounded-full bg-white transition hover:bg-slate-300 focus-visible:outline-none"
+                className="absolute left-1 top-1 rounded-full bg-white transition hover:bg-slate-300 focus-visible:outline-hidden"
               >
                 <img src={closeIcon} alt="close" className="h-6 w-6" />
               </button>
@@ -315,14 +315,14 @@ const Navbar = (prop) => {
                 <NavLink
                   onClick={toggleSideBar}
                   to="/logout"
-                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-none"
+                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-hidden"
                 >
                   Logout
                 </NavLink>
                 <NavLink
                   onClick={toggleSideBar}
                   to="/updateuser"
-                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-none"
+                  className="my-2 rounded-md bg-slate-100 px-2 py-1 font-bold text-black hover:bg-slate-300 focus-visible:outline-hidden"
                 >
                   Update User
                 </NavLink>
@@ -330,7 +330,7 @@ const Navbar = (prop) => {
             </div>
             <button
               onClick={toggleTheme}
-              className="flex w-full items-center justify-center rounded-md px-3 py-2 focus-visible:outline-none"
+              className="flex w-full items-center justify-center rounded-md px-3 py-2 focus-visible:outline-hidden"
             >
               {darkMode ? (
                 <svg

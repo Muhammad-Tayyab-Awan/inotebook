@@ -82,7 +82,7 @@ function Noteitem(prop) {
                     placeholder="Enter Title"
                     minLength={10}
                     required
-                    className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
+                    className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black md:w-9/12"
                     onChange={handleChange}
                   />
                 </div>
@@ -100,7 +100,7 @@ function Noteitem(prop) {
                     required
                     minLength={25}
                     value={updatingNote.description}
-                    className="max-h-72 min-h-40 w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
+                    className="max-h-72 min-h-40 w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black md:w-9/12"
                     onChange={handleChange}
                   ></textarea>
                 </div>
@@ -117,7 +117,7 @@ function Noteitem(prop) {
                     name="tag"
                     value={updatingNote.tag}
                     placeholder="Enter Tag"
-                    className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-none dark:bg-slate-50 dark:text-black md:w-9/12"
+                    className="w-full rounded-lg bg-slate-900 p-1 text-white focus-visible:shadow-xl focus-visible:shadow-black focus-visible:outline-hidden dark:bg-slate-50 dark:text-black md:w-9/12"
                     onChange={handleChange}
                   />
                 </div>
@@ -155,7 +155,7 @@ function Noteitem(prop) {
           </span>
           <span className="font-bold">{prop.note.tag}</span>
         </div>
-        <div className="sticky bottom-0 z-[0] flex w-auto gap-2 self-end rounded-tl-lg bg-[#111827] p-2 dark:bg-white">
+        <div className="sticky bottom-0 z-0 flex w-auto gap-2 self-end rounded-tl-lg bg-[#111827] p-2 dark:bg-white">
           <img
             src={deleteIcon}
             alt="delete"
