@@ -9,12 +9,14 @@ Thank you for your interest in contributing to **iNotebook**! 🎉 Your contribu
    - This will create a copy of the repository under your GitHub account.
 
 2. **Clone Your Fork**
+
    ```bash
    git clone https://github.com/your-username/inotebook.git
    cd inotebook
    ```
 
 3. **Create a New Branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -24,12 +26,14 @@ Thank you for your interest in contributing to **iNotebook**! 🎉 Your contribu
    - Write clean, readable, and well-documented code.
 
 5. **Commit Your Changes**
+
    ```bash
    git add .
    git commit -m "Add: Your detailed commit message"
    ```
 
 6. **Push to Your Fork**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -58,10 +62,10 @@ Thank you for your interest in contributing to **iNotebook**! 🎉 Your contribu
 ## 💡 Suggesting Features
 
 If you have an idea for a new feature:
+
 1. **Open an Issue:** Describe your idea clearly.
 2. **Discuss:** Let’s talk about it before you start working on it.
 
-## 🙌 Thank You!
+## 🙌 Thank You
 
 Your contributions are highly appreciated. Together, we can make **iNotebook** even better!
-

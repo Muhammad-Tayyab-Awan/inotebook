@@ -5,7 +5,7 @@
 If you discover a security vulnerability in **iNotebook**, please follow these steps:
 
 1. **Do not** create a public issue.
-2. Contact me directly via email: tayyabraza1918@gmail.com with detailed information about the vulnerability.
+2. Contact me directly via email: <tayyabraza1918@gmail.com> with detailed information about the vulnerability.
 3. Include:
    - A clear description of the issue.
    - Steps to reproduce the vulnerability.
@@ -29,8 +29,6 @@ If you discover a security vulnerability in **iNotebook**, please follow these s
 We aim to respond to security reports within **48 hours** and address valid issues promptly.
 
 Thank you for helping keep **iNotebook** secure!
-
-
 
 Tell them where to go, how often they can expect to get an update on a
 reported vulnerability, what to expect if the vulnerability is accepted or
